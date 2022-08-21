@@ -1,0 +1,47 @@
+.container_Home {
+  display: flex;
+  /* border: 1px solid; */
+}
+.Clock_cont_home {
+  /* border: 2px solid; */
+  display: flex;
+  position: relative;
+  height: 15rem;
+  width: 15rem;
+}
+.Greeting_Home {
+  margin: auto;
+  font-size: xx-large;
+  font-weight: bolder;
+  height: 10vh;
+  display: flex;
+}
+.typewriter {
+  margin: auto;
+  word-wrap: break-word;
+  overflow: hidden;
+  border-right: 0.15em solid rgb(4, 4, 4); /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgb(0, 0, 0);
+  }
+}

@@ -1,0 +1,139 @@
+.clk,
+:root {
+  --hrs: 12;
+  --min: 0;
+  --sec: 0;
+  --hwcf: 12rem;
+  --x: calc(var(--hwcf) / 20);
+}
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.container1 {
+  /* border: 2px solid; */
+  margin: auto;
+  height: var(--hwcf);
+  width: var(--hwcf);
+  box-sizing: border-box;
+}
+.container2 {
+  position: absolute;
+  display: flex;
+  height: var(--hwcf);
+  width: var(--hwcf);
+  animation: animateClr 5s linear infinite;
+  border-radius: 100%;
+  background: radial-gradient(#eeff8e, #000);
+  border: calc(var(--x) * 0.5) solid;
+  color: rgba(0, 0, 0, 0.336);
+  box-shadow: 0 0 calc(var(--x) * 2) #00eeff8e, -1.5px -1.5px 0 #00eeff8e,
+    -1.5px -1.5px calc(var(--x) * 2) #00eeff8e, 1.5px -1.5px 0 #00eeff8e,
+    1.5px -1.5px calc(var(--x) * 2) #00eeff8e, -1.5px 1.5px 0 #00eeff8e,
+    -1.5px 1.5px calc(var(--x) * 2) #00eeff8e, 1.5px 1.5px 0 #00eeff8e,
+    1.5px 1.5px calc(var(--x) * 2) #00eeff8e;
+}
+.cont3 {
+  display: flex;
+  margin: auto;
+  height: calc(var(--x) * 14);
+  width: calc(var(--x) * 14);
+  /* border: 1px solid; */
+}
+.nums {
+  position: absolute;
+  height: calc(var(--x) * 14);
+  width: calc(var(--x) * 14);
+  transform: rotate(calc(30deg * var(--i)));
+}
+.num {
+  border-radius: 100%;
+  height: calc(var(--x) * 1.7);
+  width: calc(var(--x) * 1.7);
+  text-align: center;
+  transform: rotate(calc(-30deg * var(--i)));
+  color: rgb(255, 255, 255);
+  animation: animateClr 5s linear infinite;
+  font-weight: bolder;
+  font-size: calc(var(--x) * 1.5);
+}
+.centerOfclk {
+  border: 1px solid;
+  width: calc(var(--x) * 0.7);
+  height: calc(var(--x) * 0.7);
+  border-radius: 100%;
+  background-color: white;
+  z-index: 10;
+
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.hands {
+  top: 49%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transform-origin: 0px;
+  transition: 100s;
+  border-radius: calc(var(--x) * 2);
+}
+.secondHand {
+  height: calc(var(--x) * 0.2);
+  animation: sec 60s linear infinite;
+  width: 40%;
+  background-color: rgba(255, 0, 0, 0.534);
+  z-index: 3;
+}
+.minitHand {
+  height: calc(var(--x) * 0.5);
+  z-index: 2;
+  animation: min 3600s linear infinite;
+  width: 30%;
+  background-color: rgba(0, 0, 255, 0.34);
+}
+.hourHand {
+  height: calc(var(--x) * 0.8);
+  z-index: 1;
+  animation: hrs 216000s linear infinite;
+  width: 20%;
+  background-color: rgba(0, 128, 0, 0.521);
+}
+@keyframes animateClr {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+@keyframes sec {
+  0% {
+    transform: rotate(calc((var(--sec)) * 6deg - 90deg));
+  }
+  100% {
+    transform: rotate(calc((var(--sec)) * 6deg - 90deg + 360deg));
+  }
+}
+@keyframes min {
+  0% {
+    transform: rotate(calc((var(--min)) * 6deg - 90deg));
+  }
+  100% {
+    transform: rotate(calc((var(--min)) * 6deg - 90deg + 360deg));
+  }
+}
+@keyframes hrs {
+  0% {
+    transform: rotate(
+      calc((var(--hrs)) * 30deg + ((var(--min)) / 60) * 30deg - 90deg)
+    );
+  }
+  100% {
+    transform: rotate(
+      calc((var(--hrs)) * 30deg + ((var(--min)) / 60) * 30deg - 90deg + 360deg)
+    );
+  }
+}

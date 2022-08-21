@@ -1,0 +1,12 @@
+.socialImg{
+    width: 5rem;
+    height: 5rem;
+    margin: 1rem;
+    border-radius: 100%;
+}
+.Social_Link_Container{
+    display: flex;
+    overflow-y: auto;
+    flex-direction: column;
+    justify-content: space-evenly;
+}

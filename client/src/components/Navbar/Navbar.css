@@ -1,0 +1,67 @@
+.container_Navbar {
+  /* border: 1px solid; */
+  position: sticky;
+  top: 0;
+  display: flex;
+  height: 5rem;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.container_Navbar2 {
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 0, 0),
+    rgba(255, 166, 0),
+    rgba(255, 255, 0),
+    rgba(0, 128, 0),
+    rgba(0, 0, 255),
+    rgba(76, 0, 130),
+    rgba(238, 130, 238)
+  );
+}
+.title_container {
+  /* border: 1px solid; */
+  display: flex;
+  flex-grow: 1;
+}
+.title {
+  text-decoration: none;
+  margin: auto;
+  font-size: 3rem;
+  color: yellow;
+  padding: 0.6rem 2rem;
+}
+.title:hover {
+  color: rgb(175, 223, 54);
+  text-shadow: 1px 1px green;
+}
+.Navigation_List_Navbar {
+  width: 70%;
+  display: flex;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+}
+.Item_Navbar {
+  /* border: 2.5px solid transparent; */
+  border-radius: 20rem;
+  color: whitesmoke;
+  text-decoration: none;
+  margin: auto 0;
+  font-weight: bolder;
+  padding: 0.7rem;
+  color: rgb(144, 54, 212);
+  transition: all 1s;
+  font-size: 1rem;
+}
+.Item_Navbar:hover {
+  font-size: 1.5rem;
+  background-color: rgba(116, 116, 236, 0.393);
+  padding: 0.2rem;
+  color: rgba(246, 183, 65, 0.8);
+  /* border: 2.5px solid; */
+}
+.Item_Navbar.active {
+  padding: 0.7rem;
+  color: aliceblue;
+  border-radius: 100%;
+  background-color: rgba(127, 255, 212, 0.236);
+}

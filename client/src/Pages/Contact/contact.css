@@ -1,0 +1,29 @@
+.contact_container{
+    display: flex;
+}
+.ibox {
+    border: 0.1rem solid black;
+    border-radius: 0.3rem;
+    padding: 0.2rem;
+    font-size: 1rem;
+    margin: 0.2rem;
+    /* width: 20vw; */
+    background: transparent;
+    resize: none;
+}
+.box{
+    margin: auto;
+    max-width: 40vw;
+}
+.subBtn:hover{
+    color: orange;
+}
+.subBtn{
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border: 3px solid;
+    border-radius: 0.3rem;
+    width: 50%;
+    margin: auto;
+}

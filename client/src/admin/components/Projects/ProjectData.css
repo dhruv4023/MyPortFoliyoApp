@@ -1,0 +1,17 @@
+.data_projectData{
+    display: flex;
+    flex-direction: column;
+}
+.list_title_projectData{
+    margin-top: 3rem;
+    border-radius: 2rem;
+    max-height: 20vh;
+    overflow-y: auto;
+}
+.title_projectdata{
+    border: 2px solid;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    max-width: 70vw;
+    margin: 0.2rem auto;
+}
