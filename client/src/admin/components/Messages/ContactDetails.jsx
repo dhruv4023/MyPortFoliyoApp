@@ -16,7 +16,7 @@ export default function ContactDetails() {
       <div className="contactLstCont">
         {messList?.map((m) => {
           return (
-            <div className="contMess">
+            <div key={m} className="contMess">
               <p className="nameContact">{m.name}</p>
               <p className="emailContact">{m.email}</p>
               <p className="messageContact">{m.message}</p>

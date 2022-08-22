@@ -75,9 +75,3 @@
     border: 2px solid;
     transition: color 1s;
 }
-
-@media (max-width:800px){
-  .container_ChatMessages{
-    width: 90vw;
-  }
-}

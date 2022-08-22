@@ -6,10 +6,11 @@ import chatBtnImg from "./chatIcon.png";
 import "./Chat.css";
 import Messages from "./Messages";
 import Login from "./Login";
+import Tip from "../Tip/Tip";
 
 export default function ChatBtn() {
   const [ChatAreaDisplay, setChatAreaDisplay] = useState({ display: "none" });
- 
+
   const dispatch = useDispatch();
   const cBtn = () => {
     if (ChatAreaDisplay.display === "block") {
@@ -23,6 +24,7 @@ export default function ChatBtn() {
   const messList = useSelector((state) => state.chatDataReducer)?.data;
   const id = User?.result?._id;
 
+  // console.log(messList)
   const [message, setMessage] = useState("");
 
   // const side = ;
@@ -37,38 +39,41 @@ export default function ChatBtn() {
   };
 
   return (
-    <section className="chat">
-      <div className="chatBtn" onClick={cBtn}>
-        <img src={chatBtnImg} width={100} alt="" />
-      </div>
-      <div className="chatArea" style={ChatAreaDisplay}>
-        <h2 className="chatHead">-:Chat with Dhruv:-</h2>
-
-        <div className="messBox">
-          {messList
-            ?.filter((q) => q?._id === id)
-            ?.map((xy) => (
-              <Messages key={xy._id} mess={xy} />
-            ))}
+    <> 
+    <div className="chat" onClick={cBtn} style={ChatAreaDisplay} > </div>
+      <div className="chat2"  >
+        <div className="chatBtn" onClick={cBtn}>
+          <img src={chatBtnImg} width={100} alt="" />
+          <Tip tip="Click on Chat To Start Chat With Dhruv" />
         </div>
+        <div className="chatArea" style={ChatAreaDisplay}>
+          <h2 className="chatHead">-:Chat with Dhruv:-</h2>
 
-        <form onSubmit={handleSendMess} className="sendMess">
-          <input
-            type="text"
-            className="sendMessChat sendChatText"
-            placeholder="Type here..."
-            onChange={(e) => setMessage(e.target.value)}
-            value={message}
-          />
-          <input
-            className="sendMessChat sendChatBnt"
-            type="submit"
-            value="Send"
-          />
-        </form>
-        <Login />
+          <div className="messBox">
+            {messList &&
+              messList
+                ?.filter((q) => q?._id === id)
+                ?.map((xy) => <Messages key={xy?._id} mess={xy} />)}
+          </div>
+
+          <form onSubmit={handleSendMess} className="sendMess">
+            <input
+              type="text"
+              className="sendMessChat sendChatText"
+              placeholder="Type here..."
+              onChange={(e) => setMessage(e.target.value)}
+              value={message}
+            />
+            <input
+              className="sendMessChat sendChatBnt"
+              type="submit"
+              value="Send"
+            />
+          </form>
+          <Login />
+        </div>
       </div>
-    </section>
+    </>
   );
 }
 

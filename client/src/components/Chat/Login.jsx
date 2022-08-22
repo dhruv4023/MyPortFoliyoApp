@@ -25,6 +25,7 @@ function Login() {
   const onSuccess = (response) => {
     const Email = response?.profileObj.email;
     const Name = response?.profileObj.name;
+    // console.log(Email,Name)
     // console.log(Email,process.env.REACT_APP_ADMIN_EMAIL === Email)
     if (process.env.REACT_APP_ADMIN_EMAIL === Email) {
       navigate("/6300dhruvfb0970e3136ea7ddc9eb");
@@ -45,12 +46,15 @@ function Login() {
         onSuccess={onSuccess}
         onFailure={onFailure}
         render={(renderProps) => (
-          <input
-            onClick={renderProps.onClick}
-            type="button"
-            value="Sign in"
-            className="start_chat_btn"
-          />
+          <>
+            <input
+              onClick={renderProps.onClick}
+              type="button"
+              value="Sign in"
+              className="start_chat_btn"
+            />
+            <b>Click on Sign in to Start Chat</b>
+          </>
         )}
       />
     </div>

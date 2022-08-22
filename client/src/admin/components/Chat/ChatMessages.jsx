@@ -45,7 +45,7 @@ function ChatMessages() {
               {chatContactList
                 ?.filter((q) => q?._id === chatId)
                 .map((m) => (
-                  <MessageList messageList={m?.messages} />
+                  <MessageList key={m} messageList={m?.messages} />
                 ))}
             </>
           ) : (

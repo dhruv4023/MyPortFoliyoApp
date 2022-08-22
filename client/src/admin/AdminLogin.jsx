@@ -10,7 +10,7 @@ function AdminLogin({setAdminPAge}) {
         process.env.REACT_APP_ADMIN_NAME === NAme
       ) {
         setAdminPAge(true);
-        console.log(NAme, password);
+        // console.log(NAme, password);
       } else {
         setAdminPAge(false);
       }

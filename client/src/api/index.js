@@ -25,3 +25,5 @@ export const getContactDataList = () => API.get('/contactOwn/contact');
 
 export const postProjectLink=(projectLinkData)=>API.post('/projectlink/postlinks',projectLinkData)
 export const getAllprojectLinks=()=>API.get('/projectlink/getlinks')
+export const deleteProject=(id)=>API.delete(`/projectlink/deletelink/${id}`)
+export const editProject=(id,Title, Link, Description )=>API.patch(`/projectlink/editlink/${id}`,{Title, Link, Description })

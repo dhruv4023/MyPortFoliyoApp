@@ -13,6 +13,7 @@ function Project() {
             </h2>
             <h3 className="project_description">{m?.Description}</h3>
             <iframe
+              title={m?.Title}
               scrolling={"no"}
               src={`${m?.Link}`}
               className="project_Link"
@@ -26,7 +27,7 @@ function Project() {
 
 export default Project;
 
-{
+// {
   /* </div>
         <div className="project_card">
           <iframe
@@ -40,4 +41,4 @@ export default Project;
             className="project_Link"
           />
         </div> */
-}
+// }

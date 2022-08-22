@@ -17,6 +17,6 @@ export const getContactList = (contactData) => async (dispatch) => {
         // console.log(data)
     } catch (error) {
         console.log(error)
-        console.log("error")
+        // console.log("error")
     }
 }

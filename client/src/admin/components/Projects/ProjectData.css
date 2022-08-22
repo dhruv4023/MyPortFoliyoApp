@@ -1,17 +1,40 @@
-.data_projectData{
-    display: flex;
-    flex-direction: column;
+.data_projectData {
+  display: flex;
+  flex-direction: column;
 }
-.list_title_projectData{
-    margin-top: 3rem;
-    border-radius: 2rem;
-    max-height: 20vh;
-    overflow-y: auto;
+.list_title_projectData {
+  margin-top: 3rem;
+  border-radius: 2rem;
+  max-height: 20vh;
+  overflow-y: auto;
 }
-.title_projectdata{
-    border: 2px solid;
-    border-radius: 0.2rem;
-    cursor: pointer;
-    max-width: 70vw;
-    margin: 0.2rem auto;
+.title_projectdata {
+  display: flex;
+  border: 2px solid;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  max-width: 70vw;
+  margin: 0.2rem auto;
+  font-weight: 700;
+}
+.trash_btn_admin {
+  padding: 0.1rem 0.4rem;
+}
+.trash_btn_admin:hover {
+  color: red;
+}
+
+.title_item_ProjectData:hover {
+  color: blue;
+}
+.btn_ProjectData {
+  cursor: pointer;
+  background-color: black;
+  margin: 0.2rem;
+  padding: 0.4rem;
+  color: white;
+  border-radius: 1rem;
+}
+.btn_ProjectData:hover {
+  color: orange;
 }
