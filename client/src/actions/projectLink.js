@@ -33,6 +33,7 @@ export const deleteProject = (id) => async (dispatch) => {
 export const editLink = (commentData) => async (dispatch) => {
   try {
     const { id, Title, Link, Description } = commentData;
+    // console.log( id, Title, Link, Description)
     const { data } = await api.editProject(id, Title, Link, Description);
     dispatch({ type: "POST_PROJECT_LINK", payload: data });
     dispatch(getAllprojectLinks());

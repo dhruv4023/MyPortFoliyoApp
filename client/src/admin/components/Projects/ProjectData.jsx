@@ -45,6 +45,9 @@ function ProjectData() {
       }
     }
     set_id(null);
+    setDesOfProj("");
+    setLinkOfproj("");
+    setTitleOfProj("");
   };
 
   const handleDel = (id) => {

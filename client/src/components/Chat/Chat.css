@@ -17,7 +17,9 @@
   padding: 0.2rem;
   cursor: pointer;
 }
-
+.chat_icon{
+  width: 7rem;
+}
 .chatArea {
   z-index: 25;
   position: absolute;
@@ -97,4 +99,10 @@
 }
 .start_chat_btn:hover {
   color: orange;
+}
+
+@media (max-width:500px){
+  .chat_icon{
+    width: 5rem;
+  }
 }

@@ -43,8 +43,8 @@ export default function ChatBtn() {
     <div className="chat" onClick={cBtn} style={ChatAreaDisplay} > </div>
       <div className="chat2"  >
         <div className="chatBtn" onClick={cBtn}>
-          <img src={chatBtnImg} width={100} alt="" />
-          <Tip tip="Click on Chat To Start Chat With Dhruv" />
+          <img src={chatBtnImg} className="chat_icon" alt="" />
+          <Tip tip="Click on Chat To Open Chat With Dhruv" />
         </div>
         <div className="chatArea" style={ChatAreaDisplay}>
           <h2 className="chatHead">-:Chat with Dhruv:-</h2>
