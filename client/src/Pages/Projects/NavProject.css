@@ -1,0 +1,26 @@
+.NavProject_Container{
+    /* border: 2px solid; */
+    position: relative;
+    height: 3rem;
+    display: flex;
+    background-color: rgba(240, 248, 255, 0.25);
+    overflow-x: scroll;
+}
+.LinkTitle_NavPrject{
+    margin: auto 0.5rem;
+    text-decoration: none;
+    color: aliceblue;
+    padding: 0.3rem 0.5rem;
+    border-radius: 2rem;
+    background-color: rgba(34, 34, 57, 0.603);
+    border: 2px solid transparent;
+}
+.LinkTitle_NavPrject:hover{
+    color: white;
+    background-color: rgb(55, 17, 83);
+}
+.LinkTitle_NavPrject.active{
+    color: white;
+    background-color: rgb(53, 109, 188);
+    border: 2px solid;
+}

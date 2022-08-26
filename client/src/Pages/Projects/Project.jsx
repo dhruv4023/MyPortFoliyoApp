@@ -1,16 +1,17 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import Tip from "../../components/Tip/Tip";
 import "./project.css";
-function Project() {
-  const linkList = useSelector((s) => s.projectReducer)?.data;
+function Project({linkList}) {
+  const {Pid}= useParams();
   return (
     <>
-      {linkList?.map((m) => {
+      {linkList?.filter(q=>(q?._id===Pid))?.map((m) => {
         return (
           <div key={m?._id} className="project_card">
             <h2 className="project_title">
               <a href={`${m?.Link}`}>{m?.Title}</a>
-            </h2>
+             </h2>
             <h3 className="project_description">{m?.Description}</h3>
             <iframe
               title={m?.Title}

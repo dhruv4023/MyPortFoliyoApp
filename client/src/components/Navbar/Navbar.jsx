@@ -12,7 +12,7 @@ export default function Navbar() {
           <NavLink to={"/"} className="Item_Navbar">
             Home
           </NavLink>
-          <NavLink to={"/projects"} className="Item_Navbar">
+          <NavLink to={"/projects/63028c7a139c6b28e7889b8b"} className="Item_Navbar">
             My Project
           </NavLink>
           <NavLink to={"/contact"} className="Item_Navbar">

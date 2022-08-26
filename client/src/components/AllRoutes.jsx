@@ -8,7 +8,8 @@ function AllRoutes() {
   return (
     <Routes>
         <Route path={'/'} element={<Home/>} />
-        <Route path={'/projects'} element={<MyProject/>} />
+        {/* <Route path={'/projects'} element={<MyProject/>} /> */}
+        <Route path={'/projects/:Pid'} element={<MyProject/>} />
         <Route path={'/contact'} element={<Contact/>} />
         <Route path={`/${process.env.REACT_APP_ADMIN_LINK}`} element={<Admin/>} />
         <Route path={`/${process.env.REACT_APP_ADMIN_LINK}/:chatId`} element={<Admin/>} />

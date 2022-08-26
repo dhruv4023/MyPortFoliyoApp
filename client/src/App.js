@@ -13,11 +13,15 @@ import { getAllprojectLinks } from "./actions/projectLink";
 export default function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllMess());
     dispatch(getContactList());
     dispatch(getAllprojectLinks());
   }, [dispatch]);
-    
+
+  // setInterval(() => {
+  //   dispatch(getAllMess());
+  //   console.log(1)
+  // }, 3000);
+
   return (
     <GlobalVarState>
       <Router id="container">
