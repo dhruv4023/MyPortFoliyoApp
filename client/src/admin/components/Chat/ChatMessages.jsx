@@ -36,7 +36,9 @@ function ChatMessages() {
             </NavLink>
           );
         })}
-        <div className="name_chatMessage">Dhruv</div>
+        {!chatContactList && (
+          <div className="name_chatMessage">No Chats Yet</div>
+        )}
       </div>
       <div className="chatArea_chatMessage">
         <div className="ChatMessages_chatArea">

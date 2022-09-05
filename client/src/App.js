@@ -15,12 +15,11 @@ export default function App() {
   useEffect(() => {
     dispatch(getContactList());
     dispatch(getAllprojectLinks());
+    setInterval(() => {
+      dispatch(getAllMess());
+    }, 2000);
   }, [dispatch]);
 
-  // setInterval(() => {
-  //   dispatch(getAllMess());
-  //   console.log(1)
-  // }, 3000);
 
   return (
     <GlobalVarState>
