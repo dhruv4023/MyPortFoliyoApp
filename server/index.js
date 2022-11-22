@@ -11,14 +11,14 @@ const app = Express();
 app.use(Express.json({ limit: "30mb", extended: true }));
 app.use(Express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
-app.use(Express.static("/server"));
+app.use(Express.static("public"));
 
 dotenv.config();
 
 app.get("/", (req, res) => {
   //   res.send("home page");
-  app.use(Express.static(path.resolve(`${process.cwd()}/build`)));
-  res.sendFile(path.resolve(`${process.cwd()}/build/index.html`));
+  app.use(Express.static(path.join(`${process.cwd()}/public/build`)));
+  res.sendFile(path.resolve(`${process.cwd()}/public/build/index.html`));
 //   app.use(Express.static(path.resolve(`/build`)));
 //   res.sendFile(path.resolve(`/build/index.html`));
 });
