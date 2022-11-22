@@ -9,13 +9,13 @@ export default function Navbar() {
           <Link to={'/'} className="title">Dhruv</Link>
         </div>
         <div className="Navigation_List_Navbar">
-          <NavLink to={"/"} className="Item_Navbar">
+          <NavLink to={"/"} className="Item_Navbar lnkCss">
             Home
           </NavLink>
-          <NavLink to={"/projects/63028c7a139c6b28e7889b8b"} className="Item_Navbar">
+          <NavLink to={"/projects"} className="Item_Navbar lnkCss">
             My Project
           </NavLink>
-          <NavLink to={"/contact"} className="Item_Navbar">
+          <NavLink to={"/contact"} className="Item_Navbar lnkCss">
             Contact Me
           </NavLink>
         </div>

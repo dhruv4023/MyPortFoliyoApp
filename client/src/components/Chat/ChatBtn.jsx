@@ -1,61 +1,56 @@
-import React, { useState } from "react";
-// import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { sendMessage } from "../../actions/chat";
+import React, { useContext, useState } from "react";
 import chatBtnImg from "./chatIcon.png";
 import "./Chat.css";
 import Messages from "./Messages";
 import Login from "./Login";
 import Tip from "../Tip/Tip";
+import GlobalVarContext from "../../Context/GlobalVarContext";
 
 export default function ChatBtn() {
-  const [ChatAreaDisplay, setChatAreaDisplay] = useState({ display: "none" });
+  const context = useContext(GlobalVarContext);
+  const { CurrentUserId, setMessage, messList, handleSendMess, message } =
+    context;
 
-  const dispatch = useDispatch();
+  const [ChatAreaDisplay, setChatAreaDisplay] = useState({ display: "none" });
+  let ChatAreaDsply = document.querySelector(":root");
+  // console.log( getComputedStyle(ChatAreaDsply).getPropertyValue("--chatDisply"))
+  // ChatAreaDsply.style.setProperty("--chatDisply", "none");
   const cBtn = () => {
-    if (ChatAreaDisplay.display === "block") {
+    if (
+      getComputedStyle(ChatAreaDsply).getPropertyValue("--chatDisply") ===
+      "block"
+    ) {
+      ChatAreaDsply.style.setProperty("--chatDisply", "none");
       setChatAreaDisplay({ display: "none" });
     } else {
+      ChatAreaDsply.style.setProperty("--chatDisply", "block");
+      // setTimeout(() => {
       setChatAreaDisplay({ display: "block" });
+      // }, 2000);
     }
-  };
-
-  const User = useSelector((state) => state.currentUserReducer);
-  const messList = useSelector((state) => state.chatDataReducer)?.data;
-  const id = User?.result?._id;
-
-  // console.log(messList)
-  const [message, setMessage] = useState("");
-
-  // const side = ;
-
-  const handleSendMess = (e) => {
-    e.preventDefault();
-    if (message) {
-      // console.log(id, message, side);
-      dispatch(sendMessage({ id, message, side: "visitor" }));
-    }
-    setMessage("");
   };
 
   return (
-    <> 
-    <div className="chat" onClick={cBtn} style={ChatAreaDisplay} > </div>
-      <div className="chat2"  >
+    <>
+      {/* <div className="chat" onClick={cBtn} style={ChatAreaDisplay}>
+        {" "}
+      </div> */}
+      <div className="chat2">
         <div className="chatBtn" onClick={cBtn}>
-          <img src={chatBtnImg} className="chat_icon" alt="" />
-          <Tip tip="Click on Chat To Open Chat With Dhruv" tf={true}/>
+          <Tip
+            tip="Click To Open Chat With Dhruv"
+            component={<img src={chatBtnImg} className="chat_icon" alt="" />}
+          />
         </div>
-        <div className="chatArea" style={ChatAreaDisplay}>
+        <div className="chatArea showHideBox" style={ChatAreaDisplay}>
+        {/* <div className="chatArea"> */}
           <h2 className="chatHead">-:Chat with Dhruv:-</h2>
-
           <div className="messBox">
             {messList &&
               messList
-                ?.filter((q) => q?._id === id)
+                ?.filter((q) => q?._id === CurrentUserId)
                 ?.map((xy) => <Messages key={xy?._id} mess={xy} />)}
           </div>
-
           <form onSubmit={handleSendMess} className="sendMess">
             <input
               type="text"
@@ -70,90 +65,9 @@ export default function ChatBtn() {
               value="Send"
             />
           </form>
-          <Login />
+          <Login style={ChatAreaDisplay} />
         </div>
       </div>
     </>
   );
 }
-
-// const handleSubmitChat = (e) => {
-//   e.preventDefault();
-//   if (!name || !email) {
-//     alert("pls fill the entire form!");
-//   } else {
-//     setContDis({ display: "none" });
-//     dispatch(chatData({  email, side }));
-//   }
-// };
-// const messages = "visitor";
-// const messageList = {
-//   name: "abc",
-//   email: "ab@mail.com",
-//   side: "visitor",
-//   messages: [
-//     {
-//       id: 1,
-//       mess: "hm",
-//       side: "me",
-//     },
-//     {
-//       id: 2,
-//       mess: "hi",
-//       side: "visitor",
-//     },
-//     {
-//       id: 3,
-//       mess: "hellooo",
-//       side: "me",
-//     },
-//     {
-//       id: 4,
-//       mess: "byee",
-//       side: "visitor",
-//     },
-//   ],
-// };
-
-// console.log(messList);
-
-// const chatDatas = [
-//   {
-//     name: "abc",
-//     email: "ab@mail.com",
-//     side: "visitor",
-//     messages: [
-//       {
-//         mess: "hm",
-//         side: "me",
-//       },
-//       {
-//         mess: "hi",
-//         side: "visitor",
-//       },
-//       {
-//         mess: "hellooo",
-//         side: "me",
-//       },
-//       {
-//         mess: "byee",
-//         side: "visitor",
-//       },
-//     ],
-//   },
-//   {
-//     name: "xyz",
-//     email: "xy@mail.com",
-//     side: "visitor",
-//     messages: [
-//       {
-//         mess: "hm",
-//         side: "me",
-//       },
-//       {
-//         mess: "hi",
-//         side: "visitor",
-//       },
-//     ],
-//   },
-// ];

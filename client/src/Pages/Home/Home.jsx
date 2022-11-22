@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Clock from "../../components/Clock/Clock";
+import InputBox from "../../components/InputBox/InputBox";
 import GlobalVarContext from "../../Context/GlobalVarContext";
 import "./home.css";
 import "./TextAnimation.css";

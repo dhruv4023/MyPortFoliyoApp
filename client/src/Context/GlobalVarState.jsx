@@ -1,17 +1,12 @@
 import GlobalVarContext from "./GlobalVarContext";
-import React, { useState } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 
 const GlobalVarState = (props) => {
-  const [time, setTime] = useState("");
-  const fun = () => {};
+  const linkList = useSelector((s) => s.projectReducer)?.data;
+  
   return (
-    <GlobalVarContext.Provider
-      value={{
-        time,
-        setTime,
-        fun,
-      }}
-    >
+    <GlobalVarContext.Provider value={{ linkList}}>
       {props.children}
     </GlobalVarContext.Provider>
   );

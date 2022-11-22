@@ -4,22 +4,12 @@
   top: 0;
   display: flex;
   height: 5rem;
-  background-color: rgba(0, 0, 0, 0.8);
-}
-.container_Navbar2 {
-  background-image: linear-gradient(
-    to right,
-    rgba(255, 0, 0),
-    rgba(255, 166, 0),
-    rgba(255, 255, 0),
-    rgba(0, 128, 0),
-    rgba(0, 0, 255),
-    rgba(76, 0, 130),
-    rgba(238, 130, 238)
-  );
+  z-index: 1;
+  background-color: var(--b);
+  box-shadow: 1px 1px 2px var(--b-8f), -1px 1px 2px var(--b-8f),
+    1px -1px 2px var(--b-8f), -1px -1px 2px var(--b-8f);
 }
 .title_container {
-  /* border: 1px solid; */
   display: flex;
   flex-grow: 1;
 }
@@ -27,12 +17,28 @@
   text-decoration: none;
   margin: auto;
   font-size: 3rem;
-  color: yellow;
+  color: transparent;
+  background: linear-gradient(
+    219deg,
+    var(--w) 19%,
+    transparent 19%,
+    transparent 20%,
+    var(--bl) 20%,
+    var(--bl) 39%,
+    transparent 39%,
+    transparent 40%,
+    var(--ylw) 40%,
+    var(--ylw) 59%,
+    transparent 59%,
+    transparent 60%,
+    var(--rd) 60%
+  );
+  background-clip: text;
   padding: 0.6rem 2rem;
+  transition: color 1s;
 }
 .title:hover {
-  color: rgb(175, 223, 54);
-  text-shadow: 1px 1px green;
+  color: var(--bl-w);
 }
 .Navigation_List_Navbar {
   width: 70%;
@@ -41,27 +47,25 @@
   box-sizing: border-box;
 }
 .Item_Navbar {
-  /* border: 2.5px solid transparent; */
-  border-radius: 20rem;
+  border: 2.5px solid transparent;
   color: whitesmoke;
   text-decoration: none;
   margin: auto 0;
-  font-weight: bolder;
   padding: 0.7rem;
-  color: rgb(144, 54, 212);
+  color: var(--bl);
+  transition: color 1s;
+  transition: background-color 1s;
+  transition: border-radius 0.5s;
+  font-weight: bolder;
+  font-size: 0.9rem;
   transition: all 1s;
-  font-size: 1rem;
 }
 .Item_Navbar:hover {
-  font-size: 1.5rem;
-  background-color: rgba(116, 116, 236, 0.393);
-  padding: 0.2rem;
-  color: rgba(246, 183, 65, 0.8);
-  /* border: 2.5px solid; */
+  background-color: var(--b-8f);
+  color: var(--bl-hvr);
 }
 .Item_Navbar.active {
-  padding: 0.7rem;
-  color: aliceblue;
-  border-radius: 100%;
-  background-color: rgba(127, 255, 212, 0.236);
+  cursor: default;
+  color: var(--bl-w);
+  background-color: rgba(0, 0, 0, 0);
 }

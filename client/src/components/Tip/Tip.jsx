@@ -1,21 +1,17 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 
-import "./Tip.css";
-function Tip({ tip,tf }) {
-  const [display, setDisplay] = useState(tf);
-  const fun=()=>{
-    setTimeout(() => {
-      setDisplay(false)
-    }, 10000);
-  }
-  fun();
+import "./ToolTip.css";
+function Tip({ tip, component }) {
+  const [dis, setDis] = useState({ visibility: "visible" });
+  setTimeout(() => {
+    setDis({ visibility: "hidden" });
+  }, 10000);
   return (
     <>
-      {display && (
-        <div className="Tip_container">
-          <div className="typewriter">{tip}</div>
-        </div>
-      )}
+      <div className="tooltip">
+        {component}
+        <div className="tooltiptext">{tip}</div>
+      </div>
     </>
   );
 }

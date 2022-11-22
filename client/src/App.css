@@ -1,92 +1,80 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial;
-    /* background-image: url("./img/bg2.jpg"); */
-    text-align: center;
-
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+  /* background-image: url("./img/bg2.jpg"); */
+  text-align: center;
 }
-.Container_App{
-    height:calc(100vh - 5rem);
-    overflow-y: auto;
-    /* background: radial-gradient(); */
-    background-image: linear-gradient(to right, rgba(255, 0, 0, 0.5),rgba(255, 166, 0, 0.5),rgba(255, 255, 0, 0.5),rgba(0, 128, 0, 0.5),rgba(0, 0, 255, 0.5),rgba(76, 0, 130, 0.5),rgba(238, 130, 238, 0.5));
-}
-
-
-::placeholder {
-    color: black;
+.Container_App {
+  height: calc(100vh - 5rem);
+  overflow-y: auto;
+  /* background: radial-gradient(); */
+  background-image: linear-gradient(120deg,var(--w), var(--bl));
 }
 
 .formArea {
-    display: flex;
-    flex-direction: column;
-
+  display: flex;
+  flex-direction: column;
 }
-
 
 .lines {
-    background-color: white;
-    margin: 0.5rem;
-    width: 20px;
-    height: 5px;
+  background-color: white;
+  margin: 0.5rem;
+  width: 20px;
+  height: 5px;
 }
 
-
 ::-webkit-scrollbar {
-    width: 0.2rem;
-    height: 0.2rem;
-    background-color: rgb(177, 176, 176);
+  width: 0.2rem;
+  height: 0.2rem;
+  background-color: rgb(177, 176, 176);
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
+@media (max-width: 760px) {
+  #title {
+    position: relative;
+  }
 
-@media (max-width:760px) {
-    #title {
-        position: relative;
-    }
+  #dropdown {
+    display: block;
+  }
 
-    #dropdown {
-        display: block;
-    }
+  .heading {
+    font-size: 1.5rem;
+  }
 
+  .navItems {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    padding: rem;
+    width: 5rem;
+  }
 
+  #chatIcon {
+    width: 3rem;
+  }
 
-    .heading {
-        font-size: 1.5rem;
-    }
+  .messBox {
+    width: 10rem;
+    height: 15rem;
+  }
 
-    .navItems {
-        display: flex;
-        flex-direction: column;
-        font-size: 1rem;
-        padding: rem;
-        width: 5rem;
-    }
+  #typeNameEmailToStartChat {
+    width: 12rem;
+    height: 22rem;
+  }
 
-    #chatIcon {
-        width: 3rem;
-    }
+  #sendChatText {
+    width: 7rem;
+  }
 
-    .messBox {
-        width: 10rem;
-        height: 15rem;
-    }
-
-    #typeNameEmailToStartChat {
-        width: 12rem;
-        height: 22rem;
-    }
-
-    #sendChatText {
-        width: 7rem;
-    }
-
-    .cbox {
-        width: 10rem;
-    }
+  .cbox {
+    width: 10rem;
+  }
 }
