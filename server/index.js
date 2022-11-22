@@ -16,13 +16,13 @@ app.use(Express.static("public"));
 dotenv.config();
 
 app.get("/", (req, res) => {
-  //   res.send("home page");
-  app.use(Express.static(path.join(`${process.cwd()}/public/build`)));
-  res.sendFile(path.resolve(`${process.cwd()}/public/build/index.html`));
+    res.send("home page");
+  // app.use(Express.static(path.join(`${process.cwd()}/public/build`)));
+  // res.sendFile(path.resolve(`${process.cwd()}/public/build/index.html`));
 //   app.use(Express.static(path.resolve(`/build`)));
 //   res.sendFile(path.resolve(`/build/index.html`));
 });
-
+console.log(path.dirname)
 app.use("/contact", contactRoutes);
 app.use("/contactOwn", contactOwnRoutes);
 app.use("/projectlink", projectLinkRoutes);
