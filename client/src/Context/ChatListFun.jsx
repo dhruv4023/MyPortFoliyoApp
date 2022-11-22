@@ -12,18 +12,20 @@ const ChatListFun = (props) => {
   const handleSendMess = (e) => {
     e.preventDefault();
     if (message) {
-      console.log(CurrentUserId, message);
+      // console.log(CurrentUserId, message);
       dispatch(sendMessage({ id: CurrentUserId, message, side: "visitor" }));
     }
     setMessage("");
   };
+  const linkList = useSelector((s) => s.projectReducer)?.data;
+  
   return (
     <GlobalVarContext.Provider
       value={{
         messList,
         handleSendMess,CurrentUserId,
         message,
-        setMessage,
+        setMessage,linkList
       }}
     >
       {props.children}

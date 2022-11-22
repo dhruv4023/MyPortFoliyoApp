@@ -5,6 +5,7 @@ import GlobalVarContext from "../../Context/GlobalVarContext";
 export default function MyProject() {
   const context = useContext(GlobalVarContext);
   const { linkList } = context;
+  console.log(linkList,`${process.env.REACT_APP_SERVER}`)
   return (
     <section className="Container_App">
       <div className="Project_container">        
