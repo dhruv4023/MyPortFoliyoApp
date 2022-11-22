@@ -11,21 +11,21 @@ const app = Express();
 app.use(Express.json({ limit: "30mb", extended: true }));
 app.use(Express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
-app.use(Express.static("public"));
+app.use(Express.static("public/build"));
 
 dotenv.config();
 
 app.get("/", (req, res) => {
-    res.send("home page");
+  // res.send("home page");
   // app.use(Express.static(path.join(`${process.cwd()}/public/build`)));
   // res.sendFile(path.resolve(`${process.cwd()}/public/build/index.html`));
-//   app.use(Express.static(path.resolve(`/build`)));
-//   res.sendFile(path.resolve(`/build/index.html`));
+    // app.use(Express.static(path.resolve(`/build`)));
+    res.sendFile(path.resolve(`index.html`));
 });
-console.log(path.dirname)
-app.use("/contact", contactRoutes);
-app.use("/contactOwn", contactOwnRoutes);
-app.use("/projectlink", projectLinkRoutes);
+// console.log(path.dirname);
+app.use("/_contact", contactRoutes);
+app.use("/_contactOwn", contactOwnRoutes);
+app.use("/_projectlink", projectLinkRoutes);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {

@@ -11,19 +11,19 @@ const API = axios.create({ baseURL: `${process.env.REACT_APP_SERVER}` })
 //     return req;
 // })
 
-export const postDetails = (contactData) => API.post('/contact/contact', contactData);
-export const chatData = (chatData) => API.post('/contact/chat', chatData);
+export const postDetails = (contactData) => API.post('/_contact/contact', contactData);
+export const chatData = (chatData) => API.post('/_contact/chat', chatData);
 
-// export const sendMess=(sendMess)=>API.patch(`/contact/chat`,sendMess);
-export const sendMess = ( id, message, side) => API.patch(`/contact/chatmess/${id}`, {message, side});
-
-
-export const getAllMess = () => API.get('/contact/get');
+// export const sendMess=(sendMess)=>API.patch(`/_contact/chat`,sendMess);
+export const sendMess = ( id, message, side) => API.patch(`/_contact/chatmess/${id}`, {message, side});
 
 
-export const getContactDataList = () => API.get('/contactOwn/contact');
+export const getAllMess = () => API.get('/_contact/get');
 
-export const postProjectLink=(projectLinkData)=>API.post('/projectlink/postlinks',projectLinkData)
-export const getAllprojectLinks=()=>API.get('/projectlink/getlinks')
-export const deleteProject=(id)=>API.delete(`/projectlink/deletelink/${id}`)
-export const editProject=(id,Title, Link, Description )=>API.patch(`/projectlink/editlink/${id}`,{Title, Link, Description })
+
+export const getContactDataList = () => API.get('/_contactOwn/contact');
+
+export const postProjectLink=(projectLinkData)=>API.post('/_projectlink/postlinks',projectLinkData)
+export const getAllprojectLinks=()=>API.get('/_projectlink/getlinks')
+export const deleteProject=(id)=>API.delete(`/_projectlink/deletelink/${id}`)
+export const editProject=(id,Title, Link, Description )=>API.patch(`/_projectlink/editlink/${id}`,{Title, Link, Description })
