@@ -19,6 +19,8 @@ app.get("/", (req, res) => {
   //   res.send("home page");
   app.use(Express.static(path.resolve(`${process.cwd()}/build`)));
   res.sendFile(path.resolve(`${process.cwd()}/build/index.html`));
+//   app.use(Express.static(path.resolve(`/build`)));
+//   res.sendFile(path.resolve(`/build/index.html`));
 });
 
 app.use("/contact", contactRoutes);
@@ -40,3 +42,8 @@ mongoose
     console.log(error);
     console.log("db not connected");
   });
+  git add .
+  git commit -am "vercel"
+  git push origin main
+  
+  
