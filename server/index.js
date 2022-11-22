@@ -42,8 +42,3 @@ mongoose
     console.log(error);
     console.log("db not connected");
   });
-  git add .
-  git commit -am "vercel"
-  git push origin main
-  
-  
