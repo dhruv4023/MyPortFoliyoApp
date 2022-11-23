@@ -16,14 +16,14 @@ app.use(cors());
 dotenv.config();
 
 app.get("/", (req, res) => {
-  let x = process.cwd();
-  res.send("home page  " + x);
-  // app.use(Express.static(path.join(`${process.cwd()}/public/build`)));
-  // res.sendFile(path.resolve(`${process.cwd()}/public/build/index.html`));
+  // let x = process.cwd();
+  // res.send("home page  " + x);
+  app.use(Express.static(path.join(`${process.cwd()}/public/build`)));
+  res.sendFile(path.resolve(`${process.cwd()}/public/build/index.html`));
   // app.use(Express.static(path.resolve(`/build`)));
   // res.sendFile(path.resolve("./public/x.html"));
 });
-console.log(path.resolve("./"));
+console.log(process.cwd());
 
 app.use("/_contact", contactRoutes);
 app.use("/_contactOwn", contactOwnRoutes);
