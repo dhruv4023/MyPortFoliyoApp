@@ -11,7 +11,7 @@ const app = Express();
 app.use(Express.json({ limit: "30mb", extended: true }));
 app.use(Express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
-// app.use(Express.static("./public"));
+app.use(Express.static("./public"));
 
 dotenv.config();
 
