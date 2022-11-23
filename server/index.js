@@ -11,7 +11,7 @@ const app = Express();
 app.use(Express.json({ limit: "30mb", extended: true }));
 app.use(Express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
-app.use(Express.static("public/build"));
+app.use(Express.static("public/"));
 
 dotenv.config();
 
@@ -19,8 +19,8 @@ app.get("/", (req, res) => {
   // res.send("home page");
   // app.use(Express.static(path.join(`${process.cwd()}/public/build`)));
   // res.sendFile(path.resolve(`${process.cwd()}/public/build/index.html`));
-    // app.use(Express.static(path.resolve(`/build`)));
-    res.sendFile(path.resolve(`index.html`));
+  // app.use(Express.static(path.resolve(`/build`)));
+  res.sendFile(path.resolve("./public/x.html"));
 });
 // console.log(path.dirname);
 app.use("/_contact", contactRoutes);
@@ -42,3 +42,9 @@ mongoose
     console.log(error);
     console.log("db not connected");
   });
+/*
+git add .
+git commit -am "vercel"
+git push origin main
+
+*/
