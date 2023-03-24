@@ -6,23 +6,34 @@ import path from "path";
 import contactRoutes from "./routes/contact.js";
 import contactOwnRoutes from "./routes/contactOwn.js";
 import projectLinkRoutes from "./routes/project.js";
-
+import fs from "fs";
 const app = Express();
 app.use(Express.json({ limit: "30mb", extended: true }));
 app.use(Express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
-app.use(Express.static("./public"));
+app.use(Express.static("./views/build"));
 
 dotenv.config();
 
-app.get("/", (req, res) => {
-  // let x = process.cwd();
-  res.send("home page  ");
-  // app.use(Express.static(path.join(`${process.cwd()}/public/build`)));
-  // res.sendFile(path.resolve(`${process.cwd()}/public/build/index.html`));
-  // app.use(Express.static(path.resolve(`/build`)));
-  // res.sendFile(path.resolve("./public/x.html"));
+app.get("/", function (req, res) {
+  res.sendFile("./index.html");
+  // fs.readFile("index.html", function (err, data) {
+  //   if (err) {
+  //     // Handle errors, such as if the file does not exist
+  //     res.writeHead(404);
+  //     res.write("File not found");
+  //     res.end();
+  //   } else {
+  //     // Send the contents of the file as a response
+  //     res.writeHead(200, { "Content-Type": "text/html" });
+  //     res.write(data);
+  //     res.end();
+  //   }
+  // });
 });
+// app.get("/", (req, res) => {
+//   res.send("home page  ");
+// });
 // console.log(process.cwd());
 
 app.use("/_contact", contactRoutes);

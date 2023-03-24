@@ -1,30 +1,40 @@
+import { useTheme } from "@emotion/react";
+import FlexBetween from "Components/FlexBetween";
+import InputBox from "Components/InputBox/InputBox";
+import WidgetWrapper from "Components/WidgetWrapper";
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { contact } from "../../actions/contact";
-import InputBox from "../../components/InputBox/InputBox";
-
 function ContactForm() {
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  console.log(name, email, message);
+  // console.log(name, email, message);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name || !email || !message) {
       alert("pls fill the entire form!");
     } else {
       alert("submitted successfully!");
-      dispatch(contact({ name, email, message }));
+      // dispatch(contact({ name, email, message }));
     }
   };
+  const theme = useTheme();
   return (
-    <div className="box">
-      <div>
+    <WidgetWrapper
+      sx={{
+        backgroundColor: theme.palette.background.semiTransparent,
+      }}
+      flexGrow={1}
+    >
+      <FlexBetween flexDirection={"column"} margin="auto">
         <h1 className="heading">Fill THE FORM</h1>
-        <form onSubmit={handleSubmit} className="formArea">
+        <form
+          onSubmit={handleSubmit}
+          style={{ display: "flex", flexDirection: "column" }}
+        >
           <InputBox
             tip={"Enter Your Name"}
             labelTxt={"Enter Name"}
@@ -42,12 +52,12 @@ function ContactForm() {
             setVal={setMessage}
             labelTxt={"Your Message"}
           />
-          <button type="submit" className="subBtn">
+          <button style={{ margin: "auto" }} type="submit" className="subBtn">
             Submit
           </button>
         </form>
-      </div>
-    </div>
+      </FlexBetween>
+    </WidgetWrapper>
   );
 }
 

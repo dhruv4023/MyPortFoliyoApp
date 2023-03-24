@@ -6,10 +6,11 @@ import linkedIn from "./linkedin.png";
 import twitter from "./twitter.jpg";
 import facebook from "./fb.jpg";
 import github from "./github.png";
+import WidgetWrapper from "Components/WidgetWrapper";
 
 function SocialLink() {
   return (
-    <div className="Social_Link_Container">
+    <WidgetWrapper>
       <a href="https://t.me/dhruv4023">
         {" "}
         <img className="socialImg" src={telegram} alt="telegram" />
@@ -30,7 +31,7 @@ function SocialLink() {
         {" "}
         <img className="socialImg" src={github} alt="github" />
       </a>
-    </div>
+    </WidgetWrapper>
   );
 }
 

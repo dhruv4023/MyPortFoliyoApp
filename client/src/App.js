@@ -1,35 +1,32 @@
-import "./App.css";
-import "./components/LinkCss.css";
-import React, { useEffect } from "react";
+import { Navbar } from "Pages/Navbar/Navbar";
+import React, { useMemo } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
-import { useDispatch } from "react-redux";
-import { getAllMess } from "./actions/chat";
-import AllRoutes from "./components/AllRoutes";
-import { getContactList } from "./actions/contact";
-import { getAllprojectLinks } from "./actions/projectLink";
-import IndexContext from "./Context/IndexContext";
+import { useSelector } from "react-redux";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+import { themeSettings } from "./theme";
+import Sections from "Components/Sections";
+import ChatBtn from "Components/Chat/ChatBtn";
+import Admin from "admin/Admin";
 
-export default function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getContactList());
-    dispatch(getAllprojectLinks());
-    // setInterval(() => {
-    dispatch(getAllMess());
-    // }, 2000);
-  }, [dispatch]);
-
+const App = () => {
+  const mode = useSelector((state) => state.mode);
+  const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+  // const isAuth = Boolean(useSelector((state) => state.token));
+  // console.log(mode,theme,isAuth)
   return (
     <>
-      <IndexContext
-        component={
-          <Router id="container">
-            <Navbar />
-            <AllRoutes />
-          </Router>
-        }
-      />
+      <Router>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Navbar />
+          <Sections />
+          <ChatBtn />
+          {/* <Admin/> */}
+        </ThemeProvider>
+      </Router>
     </>
   );
-}
+};
+
+export default App;

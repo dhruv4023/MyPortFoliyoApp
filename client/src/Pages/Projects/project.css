@@ -4,7 +4,7 @@
   height: 4rem;
   border-bottom: 3px solid rgba(233, 233, 0, 0.708);
   box-shadow: 0 0 calc(var(--x) * 2) pink, -1.5px -1.5px 0 pink,
-  1.5px 1.5px calc(var(--x) * 2) pink;
+    1.5px 1.5px calc(var(--x) * 2) pink;
 }
 
 .project_container2 {
@@ -19,35 +19,33 @@
   margin: 0.3rem auto;
   border: 5px solid transparent;
   height: calc(100% - 4rem);
-  width: calc(100vw - 11px);
+  width: calc(100% - 11px);
 }
 .project_card {
   border: 5px solid;
   color: orange;
   box-shadow: 0 0 10px orangered, -1.5px -1.5px 0 orangered,
-  -1.5px -1.5px 10px orangered, 1.5px -1.5px 0 orangered,
-  1.5px -1.5px 10px orangered, -1.5px 1.5px 0 orangered,
-  -1.5px 1.5px 10px orangered, 1.5px 1.5px 0 orangered,
-  1.5px 1.5px 10px orangered;
+    -1.5px -1.5px 10px orangered, 1.5px -1.5px 0 orangered,
+    1.5px -1.5px 10px orangered, -1.5px 1.5px 0 orangered,
+    -1.5px 1.5px 10px orangered, 1.5px 1.5px 0 orangered,
+    1.5px 1.5px 10px orangered;
 }
 .project_title {
-  padding: 0.3rem;
-}
-.project_description{
-  color: black;
+  width: fit-content;
 }
 .project_title a {
   height: 2rem;
-  color: black;
   transition: all 1ms;
 }
 .project_Link {
   flex-grow: 5;
+  border-radius: 0.5rem;
   overflow: hidden;
-  background-color: white;
   width: 100%;
+  height: 100%;
 }
 .project_title a:hover {
   color: rgb(228, 150, 7);
   text-shadow: 0.5px 0.5px black;
 }
+

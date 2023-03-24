@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
-import { sendMessage } from "../../../actions/chat";
 
 import "./ChatMessages.css";
 import MessageList from "./MessageList";
@@ -15,10 +14,6 @@ function ChatMessages() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!message) {
-    } else {
-      dispatch(sendMessage({ id: chatId, message: message, side: "me" }));
-    }
     setMessage("");
   };
   return (

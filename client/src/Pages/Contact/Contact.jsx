@@ -1,17 +1,19 @@
+import FlexBetween from "Components/FlexBetween";
+import SocialLink from "Components/SocialLink/SocialLink";
 import React from "react";
-import SocialLink from "../../components/SocialLink/SocialLink";
 
 import "./contact.css";
 import ContactForm from "./ContactForm";
 
 export default function Contact(props) {
-
   return (
-    <section className="Container_App">
-      <div className="contact_container">
-        <SocialLink/>
-        <ContactForm/>
-      </div>
-    </section>
+    <FlexBetween
+      flexDirection={"column"}
+      width={"100%"}
+      className="Container_App"
+    >
+      <ContactForm />
+      <SocialLink />
+    </FlexBetween>
   );
 }

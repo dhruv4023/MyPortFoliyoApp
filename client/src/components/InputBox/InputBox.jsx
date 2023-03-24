@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import React from "react";
 import "./InputBox.css";
 function InputBox({
@@ -14,7 +15,7 @@ function InputBox({
     <>
       {isTextarea ? (
         <>
-          <div className="container_InputBox">
+          <Box className="container_InputBox">
             <textarea
               className="ibox_InputBox"
               onChange={(e) => setVal(e.target.value)}
@@ -23,16 +24,15 @@ function InputBox({
               maxLength={mxlen}
               rows={row}
               required
-              onInvalid={tip}
             />
             <label className="label_InputBox" htmlFor={type}>
               {labelTxt}
             </label>
-          </div>
+          </Box>
         </>
       ) : (
         <>
-          <div className="container_InputBox">
+          <Box className="container_InputBox">
             <input
               className="ibox_InputBox"
               onChange={(e) => setVal(e.target.value)}
@@ -40,13 +40,11 @@ function InputBox({
               minLength={mnlen}
               maxLength={mxlen}
               required
-              oninvalid={`this.setCustomValidity("tip")`}
-              // onInvalid={`this.setCustomValidity(${"tip"})`}
             />
             <label className="label_InputBox" htmlFor={type}>
               {labelTxt}
             </label>
-          </div>
+          </Box>
         </>
       )}
     </>

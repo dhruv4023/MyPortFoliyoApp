@@ -1,24 +1,29 @@
+import { useTheme } from "@emotion/react";
+import { Box } from "@mui/material";
 import React from "react";
-import { NavLink } from "react-router-dom";
-import Tip from "../../components/Tip/Tip";
 
 import "./NavProject.css";
-function NavProject({ linkList }) {
+function NavProject({ titles, setIndex }) {
+  const theme = useTheme();
   return (
     <>
-      <div className="NavProject_Container">
-        {linkList?.map((m) => {
+      <Box display={"flex"}>
+        {titles?.map((m, i) => {
           return (
-            <NavLink
-              to={`/projects/${m?._id}`}
-              key={m?._id}
+            <Box
+              sx={{
+                backgroundColor: theme.palette.primary.dark,
+                cursor: "pointer",
+              }}
+              key={i}
+              onClick={() => setIndex(i)}
               className="LinkTitle_NavPrject"
             >
-              <Tip tip={"click to view"} component={m?.Title} />
-            </NavLink>
+              {m[0]}
+            </Box>
           );
         })}
-      </div>
+      </Box>
     </>
   );
 }

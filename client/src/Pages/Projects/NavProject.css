@@ -12,15 +12,9 @@
     color: aliceblue;
     padding: 0.3rem 0.5rem;
     border-radius: 2rem;
-    background-color: rgba(34, 34, 57, 0.603);
     border: 2px solid transparent;
 }
 .LinkTitle_NavPrject:hover{
     color: white;
     background-color: rgb(55, 17, 83);
-}
-.LinkTitle_NavPrject.active{
-    color: white;
-    background-color: rgb(53, 109, 188);
-    border: 2px solid;
 }
