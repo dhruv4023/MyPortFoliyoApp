@@ -15,10 +15,10 @@ function Project({ data }) {
               color: theme.palette.neutral.light,
             },
           }}
-          href={`${data.Link}`}
+          href={`${data.link}`}
           target="_blank"
         >
-          <Box> {data.Title}</Box>
+          <Box> {data.title}</Box>
         </a>
       </h2>
       <Box
@@ -28,12 +28,12 @@ function Project({ data }) {
         }}
         width
       >
-        {data.Description}
+        {data.description}
       </Box>
       <Box  width height={"75vh"}>
         <iframe
-          title={data.Title}
-          src={`${data.Link}`}
+          title={data.title}
+          src={`${data.link}`}
           className="project_Link"
         />
       </Box>

@@ -1,70 +1,73 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import "./ChatMessages.css";
-import MessageList from "./MessageList";
+import WidgetWrapper from "Components/WidgetWrapper";
+import ChatBox from "./ChatArea/ChatBox";
+import ChatList from "./ChatList/ChatList";
 function ChatMessages() {
-  const dispatch = useDispatch();
-  const { chatId } = useParams();
-  const [message, setMessage] = useState("");
-  const chatContactList = useSelector((state) => state.chatDataReducer)?.data;
-  // console.log(chatContactList);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setMessage("");
-  };
+  const userList = ["abc", "xyz"];
+  const msgList = [
+    {
+      name: "xyz",
+      messagesList: [
+        {
+          _id: 1,
+          side: "a",
+          message: "Hello Sir!",
+        },
+        {
+          _id: 2,
+          side: "a",
+          message: "hello",
+        },
+        {
+          _id: 3,
+          side: "v",
+          message: "hello dhruv i'm xyz",
+        },
+      ],
+    },
+    {
+      name: "abc",
+      messagesList: [
+        {
+          _id: 1,
+          side: "a",
+          message: "Hello Sir!",
+        },
+        {
+          _id: 2,
+          side: "a",
+          message: "hello",
+        },
+        {
+          _id: 3,
+          side: "v",
+          message: "hello dhruv i'm abc",
+        },
+      ],
+    },
+  ];
+  const [chatTitle, setChatTitle] = useState();
+  const [msgData, setMsgData] = useState();
+  useEffect(() => {
+    chatTitle &&
+      msgList
+        .filter((f) => f.name === chatTitle)
+        .map((m) => setMsgData(m.messagesList));
+  }, [chatTitle]);
   return (
-    <div className="component_contaier_admin">
-      <h1 className="heading_admin_component">Chats</h1>
-      <div className="chatMessage_names">
-        {chatContactList?.map((m) => {
-          return (
-            <NavLink
-              key={m?._id}
-              to={`/${process.env.REACT_APP_ADMIN_LINK}/${m._id}`}
-              className="name_chatMessage"
-            >
-              {m?.name}
-            </NavLink>
-          );
-        })}
-        {!chatContactList && (
-          <div className="name_chatMessage">No Chats Yet</div>
-        )}
-      </div>
-      <div className="chatArea_chatMessage">
-        <div className="ChatMessages_chatArea">
-          {chatId ? (
-            <>
-              {chatContactList
-                ?.filter((q) => q?._id === chatId)
-                .map((m) => (
-                  <MessageList key={m} messageList={m?.messages} />
-                ))}
-            </>
-          ) : (
-            <>
-              <h2>Select Any Chat To views Messages</h2>
-            </>
-          )}
-        </div>
-        <form onSubmit={handleSubmit}>
-          <div className="sendMess">
-            <input
-              type="text"
-              placeholder="Type here..."
-              className="iboxSendMess"
-              onChange={(e) => setMessage(e.target.value)}
-              value={message}
-            />
-            <input type="submit" value={"Send"} className="subBtnSendMess" />
-          </div>
-        </form>
-      </div>
-    </div>
+    <WidgetWrapper border={"2px solid"} flexDirection={"column"}>
+      <ChatList
+        userList={userList}
+        chatTitle={chatTitle}
+        setChatTitle={setChatTitle}
+      />
+      {msgList && <ChatBox chatTitle={chatTitle} msgList={msgData} />}
+    </WidgetWrapper>
   );
 }
 

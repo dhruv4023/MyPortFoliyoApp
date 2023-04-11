@@ -19,10 +19,10 @@ const App = () => {
       <Router>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Navbar />
+          {/* <Navbar />
           <Sections />
-          <ChatBtn />
-          {/* <Admin/> */}
+          <ChatBtn /> */}
+          <Admin/>
         </ThemeProvider>
       </Router>
     </>

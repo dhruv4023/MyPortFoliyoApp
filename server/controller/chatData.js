@@ -2,7 +2,6 @@ import jwt from 'jsonwebtoken'
 import details from '../models/chatData.js'
 import mongoose from 'mongoose';
 export const chatData = async (req, res) => {
-
     const { name, email, side } = req.body;
     // console.log(req.body)
     try {

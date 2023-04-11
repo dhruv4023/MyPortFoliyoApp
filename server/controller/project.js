@@ -4,6 +4,7 @@ export const postProjectLink = async (req, res) => {
   const postProjectData = req.body;
   // console.log(postProjectData)
   const postProject = new Project(postProjectData);
+  // console.log(postProject)
   try {
     await postProject.save();
     res.status(200).json("Posted a Link successfully");

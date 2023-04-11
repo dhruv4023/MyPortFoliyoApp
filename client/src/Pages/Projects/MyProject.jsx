@@ -7,21 +7,21 @@ export default function MyProject() {
   const linkList = [
     {
       _id: "63028c7a139c6b28e7889b8b",
-      Title: "You Tube Clone",
-      Link: null, //"https://dhruv4023youtubeclone.netlify.app",
-      Description:
+      title: "You Tube Clone",
+      link: null, //"https://dhruv4023youtubeclone.netlify.app",
+      description:
         "MERN stack Project Made As a submission Project for NULLCLASS COMPANY Internship.",
     },
     {
       _id: "63028c7a139c6b28e7889b85",
-      Title: "Appointment App",
-      Link: "https://aasdp.vercel.app",
-      Description:
+      title: "Appointment App",
+      link: "https://aasdp.vercel.app",
+      description:
         "MERN  a submission Project for NULLCLASS COMPANY Internship.",
     },
   ];
   const [index, setIndex] = useState(0);
-  const titles = linkList.map((m) => [m.Title, m._id]);
+  const titles = linkList.map((m) => [m.title, m._id]);
   const theme = useTheme();
   return (
     <WidgetWrapper

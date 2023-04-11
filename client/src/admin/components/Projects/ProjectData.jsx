@@ -1,4 +1,7 @@
-import { Delete } from "@mui/icons-material";
+import { Delete, DeleteForever } from "@mui/icons-material";
+import { Box, Button, TextField, Typography } from "@mui/material";
+import FlexBetween from "Components/FlexBetween";
+import WidgetWrapper from "Components/WidgetWrapper";
 import React from "react";
 import { useState } from "react";
 
@@ -14,9 +17,7 @@ function ProjectData() {
   const linkList = useSelector((s) => s.projectReducer)?.data;
   // console.log(linkList);
 
-  const handleAddLink = () => {
-   
-  };
+  const handleAddLink = () => {};
 
   const handleDel = (id) => {
     // let x=confirm()
@@ -26,66 +27,66 @@ function ProjectData() {
   };
 
   return (
-    <div className="component_contaier_admin">
-      <h1 className="heading_admin_component">Update Links</h1>
-      <div className="data_projectData">
-        <input
-          className="ibox"
+    <WidgetWrapper border={"2px solid white"} flexDirection="column">
+      <Typography
+        color={"primary"}
+        padding="1rem"
+        fontWeight={"bold"}
+        fontSize={"clamp(1rem,1.5rem,2rem)"}
+      >
+        Update Links
+      </Typography>
+      <FlexBetween gap={"0.5rem"} flexDirection={"column"}>
+        <TextField
           type="text"
           value={titleOfProj}
+          fullWidth
           onChange={(e) => setTitleOfProj(e.target.value)}
           placeholder="Enter Title here"
         />
-        <textarea
+        <TextField
           onChange={(e) => setDesOfProj(e.target.value)}
-          className="ibox"
           type="text"
+          fullWidth
           value={desOfProj}
           placeholder="Enter Description here"
         />
-        <input
-          className="ibox"
+        <TextField
           value={linkOfproj}
           onChange={(e) => setLinkOfproj(e.target.value)}
           type="text"
+          fullWidth
           placeholder="Enter Link here"
         />
-        <div>
+        <Box>
           {p_id ? (
             <>
-              <input
-                onClick={handleAddLink}
-                className="btn_ProjectData"
-                type="button"
-                value="Edit"
-              />
-              <input
+              <Button onClick={handleAddLink} value="Edit" />
+              <Button
                 onClick={() => {
                   set_id(null);
                   setDesOfProj("");
                   setLinkOfproj("");
                   setTitleOfProj("");
                 }}
-                className="btn_ProjectData"
-                type="button"
                 value="Clear"
               />
             </>
           ) : (
-            <input
+            <Button
               onClick={handleAddLink}
               className="btn_ProjectData"
               type="button"
               value="Add"
             />
           )}
-        </div>
-      </div>
-      <div className="list_title_projectData">
+        </Box>
+      </FlexBetween>
+      <Box>
         <h1>List</h1>
         {linkList?.map((m) => {
           return (
-            <div
+            <Box
               key={m?._id}
               onClick={() => {
                 set_id(m?._id);
@@ -95,18 +96,18 @@ function ProjectData() {
               }}
               className="title_projectdata"
             >
-              <div
+              <Box
                 className="trash_btn_admin"
                 onClick={() => handleDel(m?._id)}
               >
-                <Delete />
-              </div>
-              <div className="title_item_ProjectData">{m?.Title}</div>
-            </div>
+                <DeleteForever />
+              </Box>
+              <Box className="title_item_ProjectData">{m?.Title}</Box>
+            </Box>
           );
         })}
-      </div>
-    </div>
+      </Box>
+    </WidgetWrapper>
   );
 }
 
