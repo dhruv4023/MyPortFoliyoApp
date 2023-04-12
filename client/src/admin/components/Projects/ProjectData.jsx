@@ -4,8 +4,6 @@ import FlexBetween from "Components/FlexBetween";
 import WidgetWrapper from "Components/WidgetWrapper";
 import React, { useEffect } from "react";
 import { useState } from "react";
-
-import { useDispatch } from "react-redux";
 import "./ProjectData.css";
 import { useTheme } from "@emotion/react";
 import FlexEvenly from "Components/FlexEvenly";
@@ -32,7 +30,7 @@ function ProjectData() {
   const [linkList, setLinkList] = useState(list);
   const theme = useTheme();
   const [refresh, setRefresh] = useState(false);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleAddLink = () => {
     linkList.push({

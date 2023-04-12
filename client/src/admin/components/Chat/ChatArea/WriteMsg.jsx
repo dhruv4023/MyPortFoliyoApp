@@ -7,7 +7,7 @@ const WriteMsg = ({ setRefresh, msgList }) => {
   const handleSendMess = (e) => {
     e.preventDefault();
     setRefresh(1);
-    val != "" && msgList.push({ side: "v", message: val });
+    val !== "" && msgList.push({ side: "v", message: val });
     setVal("");
   };
   return (

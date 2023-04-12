@@ -1,12 +1,5 @@
-import React, { useState } from "react";
-import {
-  Box,
-  IconButton,
-  InputBase,
-  Typography,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material";
+import React from "react";
+import { Typography, useTheme } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import MenuItems from "./MenuItems";
@@ -20,7 +13,7 @@ export const Navbar = () => {
   const theme = useTheme();
   const dark = theme.palette.neutral.dark;
   const primaryLight = theme.palette.primary.light;
-  
+
   return (
     <>
       <FlexBetween backgroundColor={primaryLight} padding="1rem 6%">

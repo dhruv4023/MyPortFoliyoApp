@@ -1,8 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import "./ContactDetails.css";
-import WidgetWrapper from "Components/WidgetWrapper";
-import FlexEvenly from "Components/FlexEvenly";
 import DataCard from "./DataCard";
 import { Typography } from "@mui/material";
 
