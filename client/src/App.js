@@ -7,7 +7,6 @@ import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "./theme";
 import Sections from "Components/Sections";
 import ChatBtn from "Components/Chat/ChatBtn";
-import Admin from "admin/Admin";
 
 const App = () => {
   const mode = useSelector((state) => state.mode);
@@ -19,10 +18,10 @@ const App = () => {
       <Router>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          {/* <Navbar />
+          <Navbar />
           <Sections />
-          <ChatBtn /> */}
-          <Admin/>
+          <ChatBtn />
+          {/* <Admin/> */}
         </ThemeProvider>
       </Router>
     </>

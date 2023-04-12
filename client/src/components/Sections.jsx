@@ -2,8 +2,8 @@ import { useTheme } from "@emotion/react";
 import Contact from "Pages/Contact/Contact";
 import Home from "Pages/Home/Home";
 import MyProject from "Pages/Projects/MyProject";
-import React from "react";
 import FlexBetween from "./FlexBetween";
+
 
 const Sections = () => {
   const theme = useTheme();

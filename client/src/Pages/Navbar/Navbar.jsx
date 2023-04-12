@@ -7,12 +7,10 @@ import {
   useTheme,
   useMediaQuery,
 } from "@mui/material";
-import { Search, Menu, Close, CloseRounded } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import FlexBetween from "../../Components/FlexBetween";
 import MenuItems from "./MenuItems";
-
+import FlexBetween from "Components/FlexBetween";
 export const Navbar = () => {
   // const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
   // const isNonMobileScreens = useMediaQuery("(min-width: 800px)");

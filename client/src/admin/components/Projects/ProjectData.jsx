@@ -5,7 +5,7 @@ import WidgetWrapper from "Components/WidgetWrapper";
 import React, { useEffect } from "react";
 import { useState } from "react";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./ProjectData.css";
 import { useTheme } from "@emotion/react";
 import FlexEvenly from "Components/FlexEvenly";
