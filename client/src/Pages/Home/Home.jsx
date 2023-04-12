@@ -1,5 +1,4 @@
 import { Box } from "@mui/material";
-import Clock from "Components/Clock/Clock";
 import FlexBetween from "Components/FlexBetween";
 import WidgetWrapper from "Components/WidgetWrapper";
 import React from "react";

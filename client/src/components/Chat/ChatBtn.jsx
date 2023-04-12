@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import chatBtnImg from "./chatIcon.png";
 import "./Chat.css";
-import Login from "./Login";
 import { Box } from "@mui/material";
 import ChatBox from "./ChatArea/ChatBox";
 

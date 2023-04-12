@@ -1,6 +1,5 @@
 import React from "react";
 import { Typography, useTheme } from "@mui/material";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import MenuItems from "./MenuItems";
 import FlexBetween from "Components/FlexBetween";
@@ -8,7 +7,6 @@ export const Navbar = () => {
   // const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
   // const isNonMobileScreens = useMediaQuery("(min-width: 800px)");
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const theme = useTheme();
   const dark = theme.palette.neutral.dark;

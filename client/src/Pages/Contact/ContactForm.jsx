@@ -4,9 +4,8 @@ import InputBox from "Components/InputBox/InputBox";
 import WidgetWrapper from "Components/WidgetWrapper";
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 function ContactForm() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
