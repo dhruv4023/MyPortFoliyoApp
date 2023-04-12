@@ -5,8 +5,8 @@ import { useSelector } from "react-redux";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "./theme";
-import Sections from "Components/Sections";
 import ChatBtn from "Components/Chat/ChatBtn";
+import PageSections from "Components/PageSections";
 // import Admin from "admin/Admin";
 
 const App = () => {
@@ -19,7 +19,7 @@ const App = () => {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Navbar />
-          <Sections />
+          <PageSections />
           <ChatBtn />
           {/* <Admin/> */}
         </ThemeProvider>
