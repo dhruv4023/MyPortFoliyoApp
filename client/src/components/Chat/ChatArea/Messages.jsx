@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import React from "react";
 export default function Messages({ msgLst }) {
-  console.log(msgLst);
+  // console.log(msgLst);
   return (
     <>
       {msgLst.map((m, i) => (
