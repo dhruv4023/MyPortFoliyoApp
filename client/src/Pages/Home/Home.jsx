@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
-import FlexBetween from "Components/FlexBetween";
-import WidgetWrapper from "Components/WidgetWrapper";
 import React from "react";
 import "./home.css";
 import "./TextAnimation.css";
+import FlexBetween from "../../Components/FlexBetween";
+import WidgetWrapper from "../../Components/WidgetWrapper";
 export default function Home() {
   return (
     <FlexBetween width="100%" flexWrap={"wrap"}>

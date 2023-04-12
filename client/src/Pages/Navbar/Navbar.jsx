@@ -1,13 +1,12 @@
 import React from "react";
 import { Typography, useTheme } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import MenuItems from "./MenuItems";
-import FlexBetween from "Components/FlexBetween";
+import FlexBetween from "../../Components/FlexBetween";
+
 export const Navbar = () => {
   // const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
   // const isNonMobileScreens = useMediaQuery("(min-width: 800px)");
 
-  const navigate = useNavigate();
   const theme = useTheme();
   const dark = theme.palette.neutral.dark;
   const primaryLight = theme.palette.primary.light;
@@ -17,7 +16,6 @@ export const Navbar = () => {
       <FlexBetween backgroundColor={primaryLight} padding="1rem 6%">
         <Typography
           color={"primary"}
-          onClick={() => navigate("/home")}
           fontWeight={"bold"}
           fontSize={"clamp(1rem,1.5rem,2rem)"}
           sx={{

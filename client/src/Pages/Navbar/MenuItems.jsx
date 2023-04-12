@@ -4,10 +4,10 @@ import {
   ContactSupport,
   NewReleases,
 } from "@mui/icons-material";
-import { setMode } from "state";
 import { IconButton, Tooltip } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { useTheme } from "@emotion/react";
+import { setMode } from "../../state";
 
 const MenuItems = () => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const MenuItems = () => {
         </Tooltip>
       </IconButton>
 
-      <IconButton gap={"1rem"} onClick={() => dispatch(setMode())}>
+      <IconButton gap={"1rem"}>
         <Tooltip title="Contact me">
           <ContactSupport />
         </Tooltip>
