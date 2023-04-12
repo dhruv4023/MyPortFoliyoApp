@@ -1,30 +1,63 @@
-import { Delete, DeleteForever } from "@mui/icons-material";
+import { DeleteForever } from "@mui/icons-material";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import FlexBetween from "Components/FlexBetween";
 import WidgetWrapper from "Components/WidgetWrapper";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import "./ProjectData.css";
+import { useTheme } from "@emotion/react";
+import FlexEvenly from "Components/FlexEvenly";
+const list = [
+  {
+    _id: "63028c7a139c6b28e7889b8b",
+    title: "You Tube Clone",
+    link: "https://dhruv4023youtubeclone.netlify.app",
+    description:
+      "MERN stack Project Made As a submission Project for NULLCLASS COMPANY Internship.",
+  },
+  {
+    _id: "63028c7a139c6b28e7889b85",
+    title: "Appointment App",
+    link: "https://aasdp.vercel.app",
+    description: "Software development project for submission",
+  },
+];
 function ProjectData() {
   const [p_id, set_id] = useState(null);
   const [titleOfProj, setTitleOfProj] = useState("");
   const [desOfProj, setDesOfProj] = useState("");
   const [linkOfproj, setLinkOfproj] = useState("");
-
+  const [linkList, setLinkList] = useState(list);
+  const theme = useTheme();
+  const [refresh, setRefresh] = useState(false);
   const dispatch = useDispatch();
-  const linkList = useSelector((s) => s.projectReducer)?.data;
-  // console.log(linkList);
 
-  const handleAddLink = () => {};
+  const handleAddLink = () => {
+    linkList.push({
+      _id: titleOfProj,
+      title: titleOfProj,
+      description: desOfProj,
+      link: linkOfproj,
+    });
+    setRefresh(!refresh);
+    set_id(null);
+    setDesOfProj("");
+    setLinkOfproj("");
+    setTitleOfProj("");
+  };
 
   const handleDel = (id) => {
     // let x=confirm()
+    // console.log(id);
     if (window.confirm("Confirm Delete !")) {
-      // console.log()
+      setLinkList(linkList.filter((f) => f._id !== id));
     }
+    setRefresh(!refresh);
   };
+  useEffect(() => {}, [refresh]);
+  // console.log(linkList);
 
   return (
     <WidgetWrapper border={"2px solid white"} flexDirection="column">
@@ -58,51 +91,78 @@ function ProjectData() {
           fullWidth
           placeholder="Enter Link here"
         />
-        <Box>
+        <FlexEvenly width={"100%"}>
           {p_id ? (
             <>
-              <Button onClick={handleAddLink} value="Edit" />
               <Button
+                sx={{
+                  width: "30%",
+                  backgroundColor: theme.palette.neutral.light,
+                  "&:hover": {
+                    background: theme.palette.primary.dark,
+                    color: "orange",
+                  },
+                }}
+                onClick={handleAddLink}
+              >
+                Edit
+              </Button>
+              <Button
+                sx={{
+                  width: "30%",
+                  backgroundColor: theme.palette.neutral.light,
+                  "&:hover": {
+                    background: theme.palette.primary.dark,
+                    color: "orange",
+                  },
+                }}
                 onClick={() => {
                   set_id(null);
                   setDesOfProj("");
                   setLinkOfproj("");
                   setTitleOfProj("");
                 }}
-                value="Clear"
-              />
+              >
+                Clear
+              </Button>
             </>
           ) : (
             <Button
+              sx={{
+                backgroundColor: theme.palette.neutral.light,
+                "&:hover": {
+                  background: theme.palette.primary.dark,
+                  color: "orange",
+                },
+              }}
               onClick={handleAddLink}
-              className="btn_ProjectData"
+              fullWidth
               type="button"
-              value="Add"
-            />
+            >
+              Add
+            </Button>
           )}
-        </Box>
+        </FlexEvenly>
       </FlexBetween>
-      <Box>
+      <Box sx={{ color: theme.palette.primary.dark }}>
         <h1>List</h1>
         {linkList?.map((m) => {
           return (
-            <Box
-              key={m?._id}
-              onClick={() => {
-                set_id(m?._id);
-                setTitleOfProj(m?.Title);
-                setDesOfProj(m?.Description);
-                setLinkOfproj(m?.Link);
-              }}
-              className="title_projectdata"
-            >
-              <Box
-                className="trash_btn_admin"
-                onClick={() => handleDel(m?._id)}
-              >
+            <Box key={m?._id} className="title_projectdata">
+              <Box className="trash_btn_admin" onClick={() => handleDel(m._id)}>
                 <DeleteForever />
               </Box>
-              <Box className="title_item_ProjectData">{m?.Title}</Box>
+              <Box
+                onClick={() => {
+                  set_id(m?._id);
+                  setTitleOfProj(m.title);
+                  setDesOfProj(m.description);
+                  setLinkOfproj(m.link);
+                }}
+                className="title_item_ProjectData"
+              >
+                {m.title}
+              </Box>
             </Box>
           );
         })}

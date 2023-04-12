@@ -29,10 +29,8 @@
 }
 .btn_ProjectData {
   cursor: pointer;
-  background-color: black;
   margin: 0.2rem;
   padding: 0.4rem;
-  color: white;
   border-radius: 1rem;
 }
 .btn_ProjectData:hover {

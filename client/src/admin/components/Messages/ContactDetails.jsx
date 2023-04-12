@@ -1,29 +1,60 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import "./ContactDetails.css";
+import WidgetWrapper from "Components/WidgetWrapper";
+import FlexEvenly from "Components/FlexEvenly";
+import DataCard from "./DataCard";
+import { Typography } from "@mui/material";
 
 export default function ContactDetails() {
-  const messList = useSelector((state) => state.contactReducer)?.data;
-  // console.log(messList);
+  const data = [
+    {
+      name: "abc",
+      email: "abc@example",
+      message: "abc",
+    },
+    {
+      name: "xyz",
+      email: "xyz@example",
+      message: "xyz",
+    },
+    {
+      name: "xyz",
+      email: "xyz@example",
+      message: "xyz",
+    },
+    {
+      name: "xyz",
+      email: "xyz@example",
+      message: "xyz",
+    },
+    {
+      name: "xyz",
+      email: "xyz@example",
+      message: "xyz",
+    },
+    {
+      name: "xyz",
+      email: "xyz@example",
+      message: "xyz xyz xyz xyz xyz xyz xyz xyz xyz xyz xyz xyz xyz xyz xyz ",
+    },
+  ];
+
   return (
-    <section className="component_contaier_admin">
-      <h1 className="heading_admin_component">Messages</h1>
-      <div className="contMessHead">
-        <p className="nameContact">Name</p>
-        <p className="emailContact">Email</p>
-        <p className="messageContact">Message</p>
-      </div>
-      <div className="contactLstCont">
-        {messList?.map((m) => {
-          return (
-            <div key={m} className="contMess">
-              <p className="nameContact">{m.name}</p>
-              <p className="emailContact">{m.email}</p>
-              <p className="messageContact">{m.message}</p>
-            </div>
-          );
+    <>
+      <Typography
+        color={"primary"}
+        padding="1rem"
+        fontWeight={"bold"}
+        fontSize={"clamp(1rem,1.5rem,2rem)"}
+      >
+        Messages
+      </Typography>
+      <FlexEvenly flexWrap={"wrap"}>
+        {data.map((m, i) => {
+          return <DataCard key={i} dt={m} />;
         })}
-      </div>
-    </section>
+      </FlexEvenly>
+    </>
   );
 }

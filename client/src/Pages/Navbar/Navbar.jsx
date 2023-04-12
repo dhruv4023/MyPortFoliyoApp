@@ -20,12 +20,9 @@ export const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const theme = useTheme();
-  const neutralLight = theme.palette.neutral.light;
   const dark = theme.palette.neutral.dark;
-  const background = theme.palette.background.default;
   const primaryLight = theme.palette.primary.light;
-  const alt = theme.palette.background.alt;
-
+  
   return (
     <>
       <FlexBetween backgroundColor={primaryLight} padding="1rem 6%">
