@@ -7,7 +7,8 @@ import ContactDetails from "../Messages/ContactDetails";
 import ProjectData from "../Projects/ProjectData";
 function Admin() {
   const [AdminPAge, setAdminPAge] = useState(true);
-  const [pg, setPg] = useState("chat");
+  const [pg, setPg] = useState("project");
+  
   return (
     <section className="Container_App">
       <div className="admin_container">
