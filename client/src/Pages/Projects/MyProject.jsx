@@ -1,8 +1,8 @@
 import { useTheme } from "@emotion/react";
-import WidgetWrapper from "Components/WidgetWrapper";
 import React, { useState } from "react";
 import NavProject from "./NavProject";
 import Project from "./Project";
+import WidgetWrapper from "../../Components/WidgetWrapper";
 
 export default function MyProject() {
   const linkList = [

@@ -16,7 +16,6 @@ export default function Home() {
         <Box
           sx={{
             fontSize: "1.5rem",
-
             textAlign: "center",
             fontWeight: 500,
           }}

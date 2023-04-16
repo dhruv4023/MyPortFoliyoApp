@@ -1,8 +1,8 @@
 import { useTheme } from "@emotion/react";
 import { Box } from "@mui/system";
-import FlexBetween from "Components/FlexBetween";
 import React from "react";
 import "./project.css";
+import FlexBetween from "../../Components/FlexBetween";
 function Project({ data }) {
   const theme = useTheme();
   return (
@@ -30,7 +30,7 @@ function Project({ data }) {
       >
         {data.description}
       </Box>
-      <Box  width height={"75vh"}>
+      <Box width height={"75vh"}>
         <iframe
           title={data.title}
           src={`${data.link}`}

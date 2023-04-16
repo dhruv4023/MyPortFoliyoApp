@@ -11,6 +11,7 @@ export const Navbar = () => {
   const dark = theme.palette.neutral.dark;
   const primaryLight = theme.palette.primary.light;
 
+
   return (
     <>
       <FlexBetween backgroundColor={primaryLight} padding="1rem 6%">
