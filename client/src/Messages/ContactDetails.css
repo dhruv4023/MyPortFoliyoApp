@@ -1,0 +1,47 @@
+.contMessHead {
+  margin: 0.5rem;
+  display: flex;
+  text-decoration: underline;
+  width: 98%;
+  height: 2rem;
+  font-size: 3rem;
+  border-bottom: 2px solid;
+}
+.nameContact,
+.messageContact,
+.emailContact {
+  font-size: 1.3rem;
+  word-wrap: break-word;
+  border-bottom: 1px solid;
+}
+.contactLstCont {
+  height: calc(100% - 3rem);
+  width: 100%;
+  overflow-y: auto;
+}
+
+.contMess {
+  margin: 0.5rem;
+  height: 2rem;
+  display: flex;
+}
+
+.nameContact {
+  border-right: 2px solid;
+  width: 20%;
+}
+
+.emailContact {
+  border-right: 2px solid;
+  width: 40%;
+}
+
+.messageContact {
+  width: 40%;
+}
+
+@media (max-width: 800px) {
+  .container_contactList {
+    width: 90vw;
+  }
+}
