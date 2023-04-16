@@ -1,0 +1,146 @@
+/*chat----------------*/
+:root {
+  --chatDisply: "none";
+}
+
+.chat {
+  background-color: rgba(240, 248, 255, 0);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.chat2 {
+  position: fixed;
+  bottom: 1rem;
+  right: 0.2rem;
+}
+
+.chatBtn {
+  padding: 0.2rem;
+  cursor: pointer;
+}
+.chat_icon {
+  width: 7rem;
+}
+
+.chatArea {
+  z-index: 25;
+  position: absolute;
+  background-color: rgba(187, 187, 187, 0.837);
+  bottom: 2rem;
+  padding: 0.8rem;
+  border-radius: 1rem;
+  border: 2px solid rgba(128, 128, 128, 0.281);
+  right: 2rem;
+  -webkit-animation: showHideBox 2s ease-in;
+  animation: showHideBox 2s ease-in;
+  /* display: none; */
+  display: var(--chatDisply);
+}
+/* .showHideBox {
+  display: var(--chatDisply);
+} */
+
+.messBox {
+  width: 15rem;
+  height: 20rem;
+  overflow-y: auto;
+}
+
+.mess {
+  background-color: rgba(240, 248, 255, 0.555);
+  border: 1px solid rgb(187, 187, 187);
+  width: 7rem;
+  clear: both;
+  margin: 0.2rem;
+  padding: 0.1rem;
+  border-radius: 0.3rem;
+  word-break: break-all;
+}
+
+.visitor {
+  float: right;
+  background-color: rgba(147, 135, 135, 0.696);
+}
+
+.chatHead {
+  transition: all 2s;
+  text-decoration: underline;
+  color: blue;
+  text-align: center;
+}
+
+.sendMessChat {
+  padding: 0.1rem;
+  border-radius: 0.3rem;
+}
+
+.sendChatText {
+  font-weight: bold;
+}
+
+.sendChatBnt {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+.login_container_chat {
+  display: flex;
+  flex-direction: column;
+  color: aliceblue;
+  background-color: rgba(0, 0, 0, 0.96);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 1rem;
+  position: absolute;
+}
+.start_chat_btn {
+  cursor: pointer;
+  margin: auto;
+  background: transparent;
+  padding: 0.5rem;
+  color: rgb(89, 179, 239);
+  border: 4px solid;
+  border-radius: 1rem;
+  font-size: 2rem;
+  transition: color 1s;
+}
+.start_chat_btn:hover {
+  color: orange;
+}
+
+@media (max-width: 500px) {
+  .chat_icon {
+    width: 5rem;
+  }
+}
+
+/* @-webkit-keyframes showHideBox {
+  0% {
+    height: 0px;
+    width: 0px;
+    font-size: 0px;
+  }
+  100% {
+    font-size: 2rem;
+    width: 15rem;
+    height: 20rem;
+  }
+}
+
+@keyframes showHideBox {
+  0% {
+    height: 0px;
+    width: 0px;
+    font-size: 0;
+  }
+  100% {
+    font-size: 2rem;
+    width: 15rem;
+    height: 20rem;
+  }
+} */

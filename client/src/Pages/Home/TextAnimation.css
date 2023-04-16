@@ -1,0 +1,65 @@
+.animate_charcter {
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  background-clip: text;
+  color: #fff;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+}
+
+@keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* text: transparent; */
+/*********************************/
+
+.typewriter {
+  background-image: linear-gradient(
+    -225deg,
+    #8b78d3 0%,
+    #3850d7 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  word-wrap: break-word;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  overflow: hidden;
+  border-right: 0.15em solid rgb(4, 4, 4);
+  white-space: nowrap;
+  animation: typing 3s steps(40, end) infinite;
+  /* , blink-caret 0.75s step-end infinite; */
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+/* 
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgb(0, 0, 0);
+  }
+} */
