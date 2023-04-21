@@ -7,12 +7,14 @@ const ChatBox = ({ chatTitle, msgList }) => {
   const [refresh, setRefresh] = useState(0);
   useEffect(() => {
     setRefresh(0);
-  }, [refresh,msgList]);
+  }, [refresh, msgList]);
   return (
     <Box border={"1px solid"} width={"100%"}>
       <h2 className="chatHead">-:Chat with {chatTitle}:-</h2>
-      <Box className="messBox" my={"0.5rem"} width={"100%"}>{msgList && <Messages msgLst={msgList} />}</Box>
-      <WriteMsg  setRefresh={setRefresh} msgList={msgList} />
+      <Box className="messBox" my={"0.5rem"} width={"100%"}>
+        {msgList && <Messages msgLst={msgList} />}
+      </Box>
+      <WriteMsg setRefresh={setRefresh} msgList={msgList} />
     </Box>
   );
 };
