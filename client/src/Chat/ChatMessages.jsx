@@ -57,7 +57,7 @@ function ChatMessages() {
         .map((m) => setMsgData(m.messagesList));
   }, [chatTitle]);
   return (
-    <WidgetWrapper border={"2px solid"} flexDirection={"column"}>
+    <WidgetWrapper width={"80%"} border={"2px solid"} flexDirection={"column"}>
       <ChatList
         userList={userList}
         chatTitle={chatTitle}

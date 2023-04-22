@@ -3,6 +3,7 @@ import "./ContactDetails.css";
 import DataCard from "./DataCard";
 import { Typography } from "@mui/material";
 import FlexEvenly from "../Components/FlexEvenly";
+import FlexBetween from "../Components/FlexBetween";
 
 export default function ContactDetails() {
   const data = [
@@ -39,7 +40,7 @@ export default function ContactDetails() {
   ];
 
   return (
-    <>
+    <FlexBetween flexDirection={"column"}>
       <Typography
         color={"primary"}
         padding="1rem"
@@ -53,6 +54,6 @@ export default function ContactDetails() {
           return <DataCard key={i} dt={m} />;
         })}
       </FlexEvenly>
-    </>
+    </FlexBetween>
   );
 }
