@@ -37,12 +37,20 @@ function ProjectData() {
     setRefresh(!refresh);
   };
   useEffect(() => {
-    !linkList && getProject().then((l) => setLinkList(l));
+    !linkList &&
+      getProject().then((l) => {
+        console.log(l);
+        setLinkList(l);
+      });
   }, [refresh]);
-  console.log(linkList);
+  // console.log(linkList);
   const [dataToEdit, setDataToEdit] = useState();
   return (
-    <WidgetWrapper width={"70%"} border={"2px solid white"} flexDirection="column">
+    <WidgetWrapper
+      width={"70%"}
+      border={"2px solid white"}
+      flexDirection="column"
+    >
       <Typography
         color={"primary"}
         padding="1rem"

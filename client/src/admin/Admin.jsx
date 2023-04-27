@@ -8,7 +8,7 @@ import ProjectData from "../Projects/ProjectData";
 import FlexEvenly from "../Components/FlexEvenly";
 function Admin() {
   const [AdminPAge, setAdminPAge] = useState(true);
-  const [pg, setPg] = useState("chat");
+  const [pg, setPg] = useState("project");
 
   return (
     <section className="Container_App">
