@@ -6,7 +6,7 @@ import linkedIn from "./linkedin.png";
 import twitter from "./twitter.jpg";
 import facebook from "./fb.jpg";
 import github from "./github.png";
-import WidgetWrapper from "Components/WidgetWrapper";
+import WidgetWrapper from "../WidgetWrapper";
 
 function SocialLink() {
   return (

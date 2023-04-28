@@ -7,6 +7,7 @@ import { Navbar } from "./Pages/Navbar/Navbar";
 import ChatBtn from "./Components/Chat/ChatBtn";
 import PageSec from "./Components/PageSec";
 import { BrowserRouter as Router } from "react-router-dom";
+import Alert from "./Components/Alert";
 
 const App = () => {
   const mode = useSelector((state) => state.mode);
@@ -16,6 +17,7 @@ const App = () => {
     <Router>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        {/* <Alert /> */}
         <Navbar />
         <PageSec />
         <ChatBtn />

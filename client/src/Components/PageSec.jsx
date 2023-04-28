@@ -3,6 +3,7 @@ import FlexBetween from "./FlexBetween";
 import Home from "../Pages/Home/Home";
 import MyProject from "../Pages/Projects/MyProject";
 import { useTheme } from "@emotion/react";
+import Contact from "../Pages/Contact/Contact";
 
 const PageSec = () => {
   const theme = useTheme();
@@ -15,6 +16,7 @@ const PageSec = () => {
     >
       <Home />
       <MyProject />
+      <Contact />
     </FlexBetween>
   );
 };

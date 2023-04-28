@@ -1,23 +1,31 @@
 import { useTheme } from "@emotion/react";
-import FlexBetween from "Components/FlexBetween";
-import InputBox from "Components/InputBox/InputBox";
-import WidgetWrapper from "Components/WidgetWrapper";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
+import WidgetWrapper from "../../Components/WidgetWrapper";
+import FlexBetween from "../../Components/FlexBetween";
+import { MyBtn } from "../../Components/MyComponent";
+import { TextField } from "@mui/material";
+import { submitContactMsg } from "./contactApi";
 function ContactForm() {
   // const dispatch = useDispatch();
-
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  // console.log(name, email, message);
+  const initialValue = {
+    name: "",
+    email: "",
+    msg: "",
+  };
+  const [values, setValues] = useState(initialValue);
+  const onChangehandle = (val, name) => {
+    let tmp = { ...values };
+    tmp[name] = val;
+    setValues(tmp);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name || !email || !message) {
+    if (!values.name || !values.email || !values.msg) {
       alert("pls fill the entire form!");
     } else {
-      alert("submitted successfully!");
-      // dispatch(contact({ name, email, message }));
+      submitContactMsg(values);
+      setValues(initialValue);
     }
   };
   const theme = useTheme();
@@ -28,32 +36,30 @@ function ContactForm() {
       }}
       flexGrow={1}
     >
-      <FlexBetween flexDirection={"column"} margin="auto">
+      <FlexBetween gap={"0.5rem"} flexDirection={"column"} margin="auto">
         <h1 className="heading">Fill THE FORM</h1>
         <form
           onSubmit={handleSubmit}
           style={{ display: "flex", flexDirection: "column" }}
         >
-          <InputBox
-            tip={"Enter Your Name"}
-            labelTxt={"Enter Name"}
-            setVal={setName}
-          />
-          <InputBox
-            labelTxt={"Enter Email"}
-            setVal={setEmail}
-            type="email"
-            mxlen={50}
-            tip={"Enter Your Email"}
-          />
-          <InputBox
-            isTextarea={true}
-            setVal={setMessage}
-            labelTxt={"Your Message"}
-          />
-          <button style={{ margin: "auto" }} type="submit" className="subBtn">
-            Submit
-          </button>
+          <FlexBetween gap={"0.5rem"} flexDirection={"column"} margin="auto">
+            <TextField
+              label={"Enter Name"}
+              onChange={(e) => onChangehandle(e.target.value, "name")}
+            />
+            <TextField
+              label={"Enter Email"}
+              type="email"
+              onChange={(e) => onChangehandle(e.target.value, "email")}
+              mxlen={50}
+              tip={"Enter Your Email"}
+            />
+            <TextField
+              label={"Your Message"}
+              onChange={(e) => onChangehandle(e.target.value, "msg")}
+            />
+            <MyBtn label="Submit" />
+          </FlexBetween>
         </form>
       </FlexBetween>
     </WidgetWrapper>

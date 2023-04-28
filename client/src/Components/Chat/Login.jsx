@@ -1,62 +1,84 @@
-// import React from "react";
-// import { useState } from "react";
-// import { Box } from "@mui/material";
-// function Login() {
-//   const [contDis, setContDis] = useState({ display: "flex" });
+import React from "react";
+import { useState } from "react";
+import { TextField } from "@mui/material";
+import FlexBetween from "../FlexBetween";
+import { MyBtn } from "../MyComponent";
+import { VerifyAndStartChat, sendOtpEmail } from "./chatApis";
+const initialValue = {
+  name: "",
+  email: "",
+  otp: "",
+};
+function Login({ setId }) {
+  const [values, setValues] = useState(initialValue);
+  const [otpSent, setOtpSent] = useState(false);
+  const onChangehandle = (val, name) => {
+    let tmp = { ...values };
+    tmp[name] = val;
+    setValues(tmp);
+  };
+  const [loading, setLoading] = useState(false);
+  const sendOtp = () => {
+    if (!values.name || !values.email) {
+      alert("Please enter nam and Email to continue");
+    }
+    setLoading(true);
+    sendOtpEmail({ email: values.email })
+      .then((x) => {
+        setOtpSent(x);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  };
+  const startChat = () => {
+    setLoading(true);
+    VerifyAndStartChat(values)
+      .then((x) => {
+        setId(x);
+        setLoading(false);
+      })
+      .catch(() => {
+        setOtpSent(false);
+        setLoading(false);
+      });
+  };
+  return (
+    <FlexBetween gap={"0.2rem"} flexDirection={"column"}>
+      {loading ? (
+        <>Loading...</>
+      ) : (
+        <>
+          {otpSent ? (
+            <>
+              <TextField
+                onChange={(e) => onChangehandle(e.target.value, "otp")}
+                sx={{ width: "10rem" }}
+                placeholder="Enter 6 digit OTP"
+              />
+              <MyBtn label="start chat" onclickHandle={startChat} />
+            </>
+          ) : (
+            <>
+              <TextField
+                onChange={(e) => onChangehandle(e.target.value, "name")}
+                sx={{ width: "10rem" }}
+                placeholder="Enter name..."
+              />
+              <TextField
+                onChange={(e) => onChangehandle(e.target.value, "email")}
+                sx={{ width: "10rem" }}
+                type="email"
+                placeholder="Enter Email..."
+              />
+              <MyBtn label="Send OTP" onclickHandle={sendOtp} />
+            </>
+          )}
+        </>
+      )}
+    </FlexBetween>
+  );
+}
 
-//   // useEffect(() => {
-//   //   function start() {
-//   //     gapi.client.init({
-//   //       clientId: process.env.REACT_APP_GAPI,
-//   //       scope: "email",
-//   //     });
-//   //   }
-//   //   gapi.load("client:auth2", start);
-//   // }, []);
-
-//   // const onSuccess = (response) => {
-//   //   const Email = response?.profileObj.email;
-//   //   const Name = response?.profileObj.name;
-//   //   // console.log(Email,Name)
-//   //   // console.log(Email,process.env.REACT_APP_ADMIN_EMAIL === Email)
-//   //   if (process.env.REACT_APP_ADMIN_EMAIL === Email) {
-//   //     navigate("/6300dhruvfb0970e3136ea7ddc9eb");
-//   //   } else {
-//   //     dispatch(chatData({ name: Name, email: Email, side: "visitor" }));
-//   //     setContDis({ display: "none" });
-//   //   }
-//   // };
-//   // const onFailure = (response) => {
-//   //   // console.log("FAILED", response);
-//   //   setContDis({ display: "flex" });
-//   // };
-
-//   return (
-//     <Box className="login_container_chat" style={contDis}>
-//       {/* <GoogleLogin
-//         clientId={process.env.REACT_APP_GAPI}
-//         onSuccess={onSuccess}
-//         onFailure={onFailure}
-//         render={(renderProps) => (
-//           <>
-//             <input
-//               onClick={renderProps.onClick}
-//               type="button"
-//               value="Sign in"
-//               className="start_chat_btn"
-//             />
-//             <b>Click on Sign in to Start Chat</b>
-//             </>
-//             )}
-//           /> */}
-//       <input
-//         // onClick={renderProps.onClick}
-//         type="button"
-//         value="Sign in"
-//         className="start_chat_btn"
-//       />
-//     </Box>
-//   );
-// }
-
-// export default Login;
+export default Login;
