@@ -23,7 +23,7 @@ export const sendNewMsgs = async (data) => {
     body: JSON.stringify(data),
   });
   const rs = await res.json();
-  console.log(rs);
+  // console.log(rs);
 };
 
 export const sendOtpEmail = async (data) => {
