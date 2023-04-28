@@ -6,9 +6,10 @@ import ChatMessages from "../Chat/ChatMessages";
 import ContactDetails from "../Messages/ContactDetails";
 import ProjectData from "../Projects/ProjectData";
 import FlexEvenly from "../Components/FlexEvenly";
+import AdminLogin from "./AdminLogin";
 function Admin() {
-  const [AdminPAge, setAdminPAge] = useState(true);
-  const [pg, setPg] = useState("project");
+  const [AdminPAge, setAdminPAge] = useState(false);
+  const [pg, setPg] = useState("chat");
 
   return (
     <section className="Container_App">
@@ -27,8 +28,9 @@ function Admin() {
             </FlexEvenly>
           </>
         ) : (
-          <></>
-          // <AdminLogin setAdminPAge={setAdminPAge} />
+          <>
+            <AdminLogin setAdminPAge={setAdminPAge} />
+          </>
         )}
       </div>
     </section>

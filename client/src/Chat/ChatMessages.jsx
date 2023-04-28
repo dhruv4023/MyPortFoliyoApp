@@ -4,66 +4,69 @@ import "./ChatMessages.css";
 import WidgetWrapper from "../Components/WidgetWrapper";
 import ChatList from "./ChatList/ChatList";
 import ChatBox from "./ChatArea/ChatBox";
+import { getChatTitles, getChatData } from "./chatApi";
 function ChatMessages() {
-  const userList = ["abc", "xyz"];
-  const msgList = [
-    {
-      name: "xyz",
-      messagesList: [
-        {
-          _id: 1,
-          side: "a",
-          message: "Hello Sir!",
-        },
-        {
-          _id: 2,
-          side: "a",
-          message: "hello",
-        },
-        {
-          _id: 3,
-          side: "v",
-          message: "hello dhruv i'm xyz",
-        },
-      ],
-    },
-    {
-      name: "abc",
-      messagesList: [
-        {
-          _id: 1,
-          side: "a",
-          message: "Hello Sir!",
-        },
-        {
-          _id: 2,
-          side: "a",
-          message: "hello",
-        },
-        {
-          _id: 3,
-          side: "v",
-          message: "hello dhruv i'm abc",
-        },
-      ],
-    },
-  ];
-  const [chatTitle, setChatTitle] = useState();
+  // const userList = ["abc", "xyz"];
+  // const msgList = [
+  //   {
+  //     name: "xyz",
+  //     messagesList: [
+  //       {
+  //         _id: 1,
+  //         side: "a",
+  //         message: "Hello Sir!",
+  //       },
+  //       {
+  //         _id: 2,
+  //         side: "a",
+  //         message: "hello",
+  //       },
+  //       {
+  //         _id: 3,
+  //         side: "v",
+  //         message: "hello dhruv i'm xyz",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     name: "abc",
+  //     messagesList: [
+  //       {
+  //         _id: 1,
+  //         side: "a",
+  //         message: "Hello Sir!",
+  //       },
+  //       {
+  //         _id: 2,
+  //         side: "a",
+  //         message: "hello",
+  //       },
+  //       {
+  //         _id: 3,
+  //         side: "v",
+  //         message: "hello dhruv i'm abc",
+  //       },
+  //     ],
+  //   },
+  // ];
+  const [userList, setUserList] = useState();
+  const [currentChat, setCurrentChat] = useState();
   const [msgData, setMsgData] = useState();
   useEffect(() => {
-    chatTitle &&
-      msgList
-        .filter((f) => f.name === chatTitle)
-        .map((m) => setMsgData(m.messagesList));
-  }, [chatTitle]);
+    !userList && getChatTitles().then((data) => setUserList(data));
+    currentChat &&
+      getChatData(currentChat._id).then((data) => setMsgData(data));
+  }, [currentChat]);
   return (
     <WidgetWrapper width={"80%"} border={"2px solid"} flexDirection={"column"}>
-      <ChatList
-        userList={userList}
-        chatTitle={chatTitle}
-        setChatTitle={setChatTitle}
-      />
-      {msgList && <ChatBox chatTitle={chatTitle} msgList={msgData} />}
+      {userList && (
+        <ChatList
+          userList={userList}
+          currentChat={currentChat}
+          setCurrentChat={setCurrentChat}
+        />
+      )}
+      {msgData && <ChatBox currentChat={currentChat} msgList={msgData} />}
     </WidgetWrapper>
   );
 }

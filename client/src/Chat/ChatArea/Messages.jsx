@@ -15,7 +15,10 @@ export default function Messages({ msgLst }) {
                 borderRadius={"0.2rem"}
                 p={"0.2rem"}
               >
-                {m.message}
+                <Box>{m.message}</Box>
+                <Box color={"grey"} fontSize={"0.5rem"}>
+                  {String(m.messaged_on).substring(0, 19)}
+                </Box>
               </Box>
             </>
           ) : (
@@ -29,8 +32,12 @@ export default function Messages({ msgLst }) {
                 border={"1px solid"}
                 borderRadius={"0.2rem"}
                 p={"0.2rem"}
+                flexDirection={"column"}
               >
-                {m.message}
+                <Box>{m.message}</Box>
+                <Box color={"grey"} fontSize={"0.5rem"}>
+                  {String(m.messaged_on).substring(0, 19)}
+                </Box>{" "}
               </Box>
             </>
           )}

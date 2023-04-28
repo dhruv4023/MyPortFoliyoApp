@@ -1,14 +1,16 @@
 import { Button, TextField } from "@mui/material";
 import React, { useState } from "react";
 import FlexBetween from "../../Components/FlexBetween";
+import { sendNewMsgs } from "../chatApi";
 
-const WriteMsg = ({ setRefresh, msgList }) => {
+const WriteMsg = ({ id, setRefresh, msgList }) => {
   const [val, setVal] = useState("");
   const handleSendMess = (e) => {
     e.preventDefault();
     setRefresh(1);
     val !== "" && msgList.push({ side: "a", message: val });
     setVal("");
+    sendNewMsgs({ side: "a", message: val },id);
   };
   return (
     <form onSubmit={handleSendMess}>

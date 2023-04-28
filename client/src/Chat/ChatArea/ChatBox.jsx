@@ -4,20 +4,20 @@ import Messages from "./Messages";
 import WriteMsg from "./WriteMsg";
 import FlexBetween from "../../Components/FlexBetween";
 
-const ChatBox = ({ chatTitle, msgList }) => {
+const ChatBox = ({ currentChat, msgList }) => {
   const [refresh, setRefresh] = useState(0);
   useEffect(() => {
     setRefresh(0);
   }, [refresh, msgList]);
   return (
     <>
-      {chatTitle ? (
+      {currentChat ? (
         <FlexBetween
           flexDirection={"column"}
           border={"1px solid"}
           width={"100%"}
         >
-          <h2 className="chatHead">-:Chat with {chatTitle}:-</h2>
+          <h2 className="chatHead">-:Chat with {currentChat.name}:-</h2>
           <Box
             className="messBox"
             height={"50vh"}
@@ -28,7 +28,7 @@ const ChatBox = ({ chatTitle, msgList }) => {
             {msgList && <Messages msgLst={msgList} />}
           </Box>
 
-          <WriteMsg setRefresh={setRefresh} msgList={msgList} />
+          <WriteMsg id={currentChat._id} setRefresh={setRefresh} msgList={msgList} />
         </FlexBetween>
       ) : (
         <h1>Select User to Start Chat</h1>
