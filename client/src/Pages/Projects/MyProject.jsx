@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import NavProject from "./NavProject";
 import Project from "./Project";
 import WidgetWrapper from "../../Components/WidgetWrapper";
-import { getProject } from "./projectFun";
+import { getProject } from "./projectApi";
 
 // const linkList = [
 //   {
