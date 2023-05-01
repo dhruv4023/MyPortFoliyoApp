@@ -13,17 +13,20 @@ export const getChatData = async (id) => {
   return rs;
 };
 
-export const sendNewMsgs = async (data) => {
+export const sendNewMsgs = async (data, id) => {
   //   console.log(Details);
-  const res = await fetch(`${process.env.REACT_APP_SERVER}/chat/addNewMsg/`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+  const res = await fetch(
+    `${process.env.REACT_APP_SERVER}/chat/addNewMsg/${id}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
   const rs = await res.json();
-  // console.log(rs);
+  // alert(rs);
 };
 
 export const sendOtpEmail = async (data) => {
@@ -50,5 +53,6 @@ export const VerifyAndStartChat = async (data) => {
     body: JSON.stringify(data),
   });
   const rs = await res.json();
+  localStorage.setItem("id", rs.id);
   return rs.id;
 };

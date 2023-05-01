@@ -1,10 +1,10 @@
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Messages from "./Messages";
 import WriteMsg from "./WriteMsg";
 import Login from "../Login";
 import { getChatData } from "../chatApis";
-import FlexBetween from "../../FlexBetween";
+import { MyBtn } from "../../MyComponent";
 
 const msgList = [
   {
@@ -24,8 +24,8 @@ const ChatBox = () => {
   useEffect(() => {
     setRefresh(0);
   }, [refresh]);
-
-  const [id, setId] = useState();
+  const [id, setId] = useState(localStorage.getItem("id"));
+  console.log(id);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
@@ -40,27 +40,34 @@ const ChatBox = () => {
   }, [id]);
 
   return (
-      <Box className="chatArea showHideBox">
-        {loading ? (
-          <>Loading...</>
-        ) : (
-          <>
-            {id ? (
-              <>
-                <h2 className="chatHead">-:Chat with Dhruv:-</h2>
-                <Box className="messBox">
-                  {msgList && <Messages msgLst={msgList} />}
-                </Box>
-                <WriteMsg setRefresh={setRefresh} msgList={msgList} />
-              </>
-            ) : (
-              <>
-                <Login setId={setId} />
-              </>
-            )}
-          </>
-        )}
-      </Box>
+    <Box className="chatArea showHideBox">
+      {loading ? (
+        <>Loading...</>
+      ) : (
+        <>
+          {id ? (
+            <>
+              <MyBtn
+                label="Log out"
+                onclickHandle={() => {
+                  localStorage.removeItem("id");
+                  setId(null);
+                }}
+              />
+              <h2 className="chatHead">-:Chat with Dhruv:-</h2>
+              <Box className="messBox">
+                {msgList && <Messages msgLst={msgList} />}
+              </Box>
+              <WriteMsg id={id} setRefresh={setRefresh} msgList={msgList} />
+            </>
+          ) : (
+            <>
+              <Login setId={setId} />
+            </>
+          )}
+        </>
+      )}
+    </Box>
   );
 };
 

@@ -24,11 +24,18 @@ export default function MyProject() {
   const [index, setIndex] = useState(0);
   const [titles, setTitles] = useState();
   const [linkList, setLinkList] = useState();
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    getProject().then((project) => {
-      setLinkList(project);
-      setTitles(project.map((m) => [m.title, m._id]));
-    });
+    setLoading(true);
+    getProject()
+      .then((project) => {
+        setLinkList(project);
+        setTitles(project.map((m) => [m.title, m._id]));
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
   }, []);
   const theme = useTheme();
   return (
@@ -37,10 +44,24 @@ export default function MyProject() {
       backgroundColor={theme.palette.background.semiTransparent}
       flexDirection={"column"}
     >
-      {titles && linkList && (
+      {loading ? (
+        <>Loading...</>
+      ) : (
         <>
-          <NavProject titles={titles} setIndex={setIndex} />
-          <Project data={linkList[index]} />
+          {titles && linkList ? (
+            <>
+              {titles.length !== 0 ? (
+                <>
+                  <NavProject titles={titles} setIndex={setIndex} />
+                  <Project data={linkList[index]} />
+                </>
+              ) : (
+                <>No Project Added Yet</>
+              )}
+            </>
+          ) : (
+            <>Server Error</>
+          )}
         </>
       )}
     </WidgetWrapper>
