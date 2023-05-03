@@ -1,6 +1,6 @@
 import { Button, TextField } from "@mui/material";
 import React, { useState } from "react";
-import FlexBetween from "../../Components/FlexBetween";
+import FlexBetween from "../../../Components/FlexBetween";
 import { sendNewMsgs } from "../chatApi";
 
 const WriteMsg = ({ id, setRefresh, msgList }) => {

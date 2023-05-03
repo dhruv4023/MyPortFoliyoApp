@@ -5,8 +5,9 @@ import NavBar from "./NavBar";
 import ChatMessages from "../Chat/ChatMessages";
 import ContactDetails from "../Messages/ContactDetails";
 import ProjectData from "../Projects/ProjectData";
-import FlexEvenly from "../Components/FlexEvenly";
 import AdminLogin from "./AdminLogin";
+import Expense from "../Expense/Expense";
+import FlexEvenly from "../../Components/FlexEvenly";
 function Admin() {
   const [AdminPAge, setAdminPAge] = useState(false);
   const [pg, setPg] = useState("chat");
@@ -14,7 +15,7 @@ function Admin() {
   return (
     <section className="Container_App">
       <div className="admin_container">
-        {AdminPAge ? (
+        {!AdminPAge ? (
           <>
             <NavBar setPg={setPg} />
             <FlexEvenly>
@@ -22,6 +23,8 @@ function Admin() {
                 <ChatMessages />
               ) : pg === "contact" ? (
                 <ContactDetails />
+              ) : pg === "expense" ? (
+                <Expense />
               ) : (
                 pg === "project" && <ProjectData />
               )}

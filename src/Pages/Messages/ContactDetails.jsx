@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "./ContactDetails.css";
-import DataCard from "./DataCard";
 import { Typography } from "@mui/material";
-import FlexEvenly from "../Components/FlexEvenly";
-import FlexBetween from "../Components/FlexBetween";
-import { delContactMsg, getContactMsg } from "./contactData";
-import DisplayLodingError from "../Components/LodingError";
+import FlexBetween from "../../Components/FlexBetween";
+import FlexEvenly from "../../Components/FlexEvenly";
+import DataCard from "./DataCard";
+import { getContactMsg, delContactMsg } from "./contactData";
 
 export default function ContactDetails() {
   // const data = [
@@ -58,7 +56,7 @@ export default function ContactDetails() {
     setData(data.filter((f) => f._id !== id));
     data.length === 0 && setLoadErr(2);
   };
-  console.log(loadErr)
+  console.log(loadErr);
   return (
     <FlexBetween flexDirection={"column"}>
       <Typography

@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import "./ProjectData.css";
 import { useTheme } from "@emotion/react";
-import WidgetWrapper from "../Components/WidgetWrapper";
+import WidgetWrapper from "../../Components/WidgetWrapper";
 import { delProject, getProject } from "./project";
 import AddProject from "./AddProject";
 const list = [

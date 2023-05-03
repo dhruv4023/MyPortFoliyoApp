@@ -1,10 +1,10 @@
 import { useTheme } from "@emotion/react";
-import { Chat, ContactSupport, Work } from "@mui/icons-material";
+import { Chat, ContactSupport, Numbers, Work } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import React from "react";
-import FlexBetween from "../Components/FlexBetween";
+import FlexBetween from "../../Components/FlexBetween";
 
-const NavBar = ({setPg}) => {
+const NavBar = ({ setPg }) => {
   const theme = useTheme();
   return (
     <FlexBetween
@@ -12,14 +12,17 @@ const NavBar = ({setPg}) => {
       padding="1rem 6%"
     >
       <FlexBetween gap={"1rem"}>
-        <IconButton onClick={()=>setPg("chat")}>
-          <Chat  />
+        <IconButton onClick={() => setPg("chat")}>
+          <Chat />
         </IconButton>
-        <IconButton onClick={()=>setPg("contact")}>
+        <IconButton onClick={() => setPg("contact")}>
           <ContactSupport />
         </IconButton>
-        <IconButton onClick={()=>setPg("project")}>
+        <IconButton onClick={() => setPg("project")}>
           <Work />
+        </IconButton>
+        <IconButton onClick={() => setPg("expense")}>
+          <Numbers />
         </IconButton>
       </FlexBetween>
     </FlexBetween>

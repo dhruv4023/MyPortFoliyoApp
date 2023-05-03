@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import FlexBetween from "../Components/FlexBetween";
+import FlexBetween from "../../Components/FlexBetween";
 import { Button, TextField } from "@mui/material";
-import FlexEvenly from "../Components/FlexEvenly";
+import FlexEvenly from "../../Components/FlexEvenly";
 import { useTheme } from "@emotion/react";
 import { addProject, editProject } from "./project";
 

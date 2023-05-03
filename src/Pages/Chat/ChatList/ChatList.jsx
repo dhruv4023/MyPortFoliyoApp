@@ -1,6 +1,6 @@
 import React from "react";
 import DisplayChatTitle from "./DisplayChatTitle";
-import FlexEvenly from "../../Components/FlexEvenly";
+import FlexEvenly from "../../../Components/FlexEvenly";
 
 const ChatList = ({ userList, currentChat, setCurrentChat }) => {
   return (

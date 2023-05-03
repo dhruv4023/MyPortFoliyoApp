@@ -1,10 +1,9 @@
 import { useTheme } from "@emotion/react";
 import { Box, IconButton } from "@mui/material";
 import React from "react";
-import WidgetWrapper from "../Components/WidgetWrapper";
-import FlexBetween from "../Components/FlexBetween";
 import { DeleteForever } from "@mui/icons-material";
-import { delContactMsg } from "./contactData";
+import WidgetWrapper from "../../Components/WidgetWrapper";
+import FlexBetween from "../../Components/FlexBetween";
 
 const DataCard = ({ dt, deleteMsg }) => {
   const theme = useTheme();

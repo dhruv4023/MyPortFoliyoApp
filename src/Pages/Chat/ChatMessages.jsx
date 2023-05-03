@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import "./ChatMessages.css";
-import WidgetWrapper from "../Components/WidgetWrapper";
+import WidgetWrapper from "../../Components/WidgetWrapper";
 import ChatList from "./ChatList/ChatList";
 import ChatBox from "./ChatArea/ChatBox";
 import { getChatTitles, getChatData } from "./chatApi";

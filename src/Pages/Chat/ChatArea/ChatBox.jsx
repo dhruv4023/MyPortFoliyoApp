@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Messages from "./Messages";
 import WriteMsg from "./WriteMsg";
-import FlexBetween from "../../Components/FlexBetween";
+import FlexBetween from "../../../Components/FlexBetween";
 
 const ChatBox = ({ currentChat, msgList }) => {
   const [refresh, setRefresh] = useState(0);

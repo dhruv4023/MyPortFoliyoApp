@@ -1,7 +1,7 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import React, { useState } from "react";
-import FlexBetween from "../Components/FlexBetween";
 import { getLoginUsingCode } from "./adminApi";
+import FlexBetween from "../../Components/FlexBetween";
 
 const AdminLogin = ({ setAdminPAge }) => {
   const [loading, setLoading] = useState(false);
@@ -29,6 +29,7 @@ const AdminLogin = ({ setAdminPAge }) => {
         <>
           <TextField
             label="password"
+            type="password"
             onChange={(e) => setCode(e.target.value)}
           />
           <Button onClick={getLogin}>Login</Button>

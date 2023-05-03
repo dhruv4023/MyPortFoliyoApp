@@ -35,7 +35,7 @@ export default function Messages({ msgLst }) {
                 flexDirection={"column"}
               >
                 <Box>{m.message}</Box>
-                <Box color={"grey"} fontSize={"0.5rem"}>
+                <Box color={"black"} fontSize={"0.5rem"}>
                   {String(m.messaged_on).substring(0, 19)}
                 </Box>{" "}
               </Box>

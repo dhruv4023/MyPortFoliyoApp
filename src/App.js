@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "./theme";
-import Admin from "./admin/Admin";
+import Admin from "./Pages/admin/Admin";
 
 const App = () => {
   const mode = useSelector((state) => state.mode);
