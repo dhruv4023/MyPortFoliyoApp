@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Typography } from "@mui/material";
 import FlexBetween from "../../Components/FlexBetween";
 import FlexEvenly from "../../Components/FlexEvenly";
+import LodingError from "../../Components/LodingError";
 import DataCard from "./DataCard";
 import { getContactMsg, delContactMsg } from "./contactData";
 
@@ -68,7 +69,7 @@ export default function ContactDetails() {
         Messages
       </Typography>
       <FlexEvenly flexWrap={"wrap"}>
-        <DisplayLodingError
+        <LodingError
           code={loadErr}
           displayComponent={data.map((m, i) => {
             return <DataCard key={i} dt={m} deleteMsg={deleteMsg} />;

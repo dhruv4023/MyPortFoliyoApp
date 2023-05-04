@@ -1,14 +1,15 @@
 import { useTheme } from "@emotion/react";
 import { Box, Typography, useMediaQuery } from "@mui/material";
-import { Navbar } from "Pages/Navbar/Navbar";
+
 import React from "react";
+import NavBar from "../Pages/admin/NavBar";
+import FlexBetween from "./FlexBetween";
 
 const WidgetsOnPage = ({ title, leftComponent, rightComponent }) => {
   const theme = useTheme();
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
   return (
-    <Box>
-      <Navbar />
+    <FlexBetween flexDirection={"column"} width={"100%"}>
       {title && (
         <Box
           width={"100%"}
@@ -43,7 +44,7 @@ const WidgetsOnPage = ({ title, leftComponent, rightComponent }) => {
           {rightComponent}
         </Box>
       </Box>
-    </Box>
+    </FlexBetween>
   );
 };
 
