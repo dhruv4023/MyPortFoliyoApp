@@ -1,56 +1,120 @@
-import React from "react";
+import React, { useState } from "react";
 import WidgetsOnPage from "../../Components/WidgetsOnPage";
 import AddSection from "./Widgets/AddSection";
 import AddNewEntry from "./Widgets/AddNewEntry";
 import TotalOfAllSection from "./Widgets/TotalOfAllSection";
 import AllExpenseSections from "./Widgets/AllExpenseSections/AllExpenseSections";
-import CollapsibleTable from "../../Components/CollapsibleTable";
 
 const Expense = () => {
-  const data = [
-    {
-      AID: "AID",
-      time: "time",
-      status: "status",
-      AllData: {
-        Date: "date",
-        "Contact Number": "contactNumber",
-        Email: "email",
-        Message: "message",
-        Name: "name",
+  const allSections = ["pocket", "bank"];
+  const allData = {
+    pocket: [
+      {
+        month: "01-2023",
+        entries: [
+          {
+            date: "01-01-2023",
+            dailydebit: 400,
+            dailyCredit: 800,
+            entries: [
+              { comment: "comment1", value: -20 },
+              { comment: "comment2", value: 40 },
+            ],
+          },
+          {
+            date: "02-01-2023",
+            dailydebit: 500,
+            dailyCredit: 300,
+            entries: [
+              { comment: "comment1", value: -20 },
+              { comment: "comment2", value: 40 },
+            ],
+          },
+        ],
       },
-    },
-    {
-      AID: "AID2",
-      time: "time2",
-      status: "status2",
-      AllData: {
-        Date: "date2",
-        ContactNumber: "contactNumber2",
-        Email: "email2",
-        Message: "message2",
-        Name: "name2",
+      {
+        month: "02-2023",
+        entries: [
+          {
+            date: "01-01-2023",
+            dailydebit: 400,
+            dailyCredit: 200,
+            entries: [
+              { comment: "comment1", value: -20 },
+              { comment: "comment2", value: 40 },
+            ],
+          },
+          {
+            date: "02-01-2023",
+            dailydebit: 400,
+            dailyCredit: 300,
+            entries: [
+              { comment: "comment1", value: -20 },
+              { comment: "comment2", value: 40 },
+            ],
+          },
+        ],
       },
-    },
-  ];
+    ],
+    bank: [
+      {
+        month: "01-2023",
+        entries: [
+          {
+            date: "01-01-2023",
+            dailydebit: 400,
+            dailyCredit: 300,
+            entries: [
+              { comment: "comment1", value: -20 },
+              { comment: "comment2", value: 40 },
+            ],
+          },
+          {
+            date: "02-01-2023",
+            dailydebit: 400,
+            dailyCredit: 300,
+            entries: [
+              { comment: "comment1", value: -20 },
+              { comment: "comment2", value: 40 },
+            ],
+          },
+        ],
+      },
+    ],
+  };
+  const [data, setData] = useState(allData);
+  const [refresh, setRefresh] = useState(true);
   return (
     <>
-      {/* <WidgetsOnPage
+      <WidgetsOnPage
         title={"Expense DashBoard"}
         leftComponent={
           <>
-            <AddNewEntry />
-            <AddSection />
+            <AddNewEntry
+              data={data}
+              allSections={allSections}
+              refresh={refresh}
+              setRefresh={setRefresh}
+            />
+            <AddSection
+              allSections={allSections}
+              data={data}
+              refresh={refresh}
+              setRefresh={setRefresh}
+            />
           </>
         }
         rightComponent={
           <>
-            <TotalOfAllSection />
+            <TotalOfAllSection
+              debit={data.overalDebit}
+              credit={data.overalCredit}
+            />
             <AllExpenseSections data={data} />
           </>
         }
-      /> */}
-      <CollapsibleTable data={data}/>
+      />
+      {/* <CollapsibleTable data={data} /> */}
     </>
   );
 };

@@ -12,10 +12,11 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { Circle, Close, Done } from "@mui/icons-material";
+import { Close, Done } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import FlexBetween from "./FlexBetween";
 import FlexEvenly from "./FlexEvenly";
+import { AddResult } from "./MyComponent";
 // export function createDataRow(
 //   AID,
 //   time,
@@ -39,11 +40,9 @@ import FlexEvenly from "./FlexEvenly";
 //     },
 //   };
 // }
-
-function Row({ changeStatus, row }) {
-  // const = props;
+function Row({ row }) {
   const [open, setOpen] = React.useState(false);
-
+  var total = row.dailydebit + row.dailyCredit;
   return (
     <React.Fragment>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
@@ -56,52 +55,49 @@ function Row({ changeStatus, row }) {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-      
-        <TableCell component="th" scope="row">
-          {row.AID}
-        </TableCell>
+        {Object.keys(row).map((key) => {
+          return (
+            <TableCell
+              key={key}
+              component="th"
+              scope="row"
+              sx={{
+                fontWeight: open && "bold",
+              }}
+            >
+              {key === "entries" ? total : row[key]}
+            </TableCell>
+          );
+        })}
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
               <Typography variant="h6" gutterBottom component="div">
-                All Data
+                All Expense of {row["month"]}
               </Typography>
               <Table size="small" aria-label="purchases">
-                {row?.AllData &&
-                  Object.keys(row?.AllData).map((m) => {
-                    return (
-                      <TableRow key={m}>
-                        <TableCell sx={{ fontWeight: "700" }} width={"30%"}>
-                          {m}
-                        </TableCell>
-                        <TableCell color="Primary">{row.AllData[m]}</TableCell>
-                      </TableRow>
-                    );
-                  })}
+                <TableHead>
+                  <TableRow>
+                    <TableCell sx={{ fontWeight: "700" }}>Comment</TableCell>
+                    <TableCell sx={{ fontWeight: "700" }}>Expense</TableCell>
+                  </TableRow>
+                </TableHead>
+                {row.entries.map((m) => {
+                  return (
+                    <TableRow key={m}>
+                      {Object.keys(m).map((k) => {
+                        return (
+                          <TableCell key={k} color="Primary">
+                            {m[k]}
+                          </TableCell>
+                        );
+                      })}
+                    </TableRow>
+                  );
+                })}
               </Table>
-              {new Date().toISOString().substring(0, 10) ===
-                row?.AllData.Date && (
-                <FlexBetween>
-                  <FlexEvenly gap={"1rem"} width={"100%"} padding={"1rem"}>
-                    <Button
-                      disabled={!(row.status === 0)}
-                      onClick={() => changeStatus(1, row.AID)}
-                      sx={{ width: "2rem", background: "blue", color: "white" }}
-                    >
-                      <Done />
-                    </Button>
-                    <Button
-                      onClick={() => changeStatus(-1, row.AID)}
-                      disabled={!(row.status === 0)}
-                      sx={{ width: "2rem", background: "red", color: "white" }}
-                    >
-                      <Close />
-                    </Button>
-                  </FlexEvenly>
-                </FlexBetween>
-              )}
             </Box>
           </Collapse>
         </TableCell>
@@ -111,45 +107,59 @@ function Row({ changeStatus, row }) {
 }
 export default function CollapsibleTable({ data }) {
   const [rows, setRows] = React.useState(data);
-  // console.log(rows, data);
-  const [refresh, setRefresh] = React.useState(0);
-  const changeStatus = (newStatus, AID) => {
-    rows.find((f) => f.AID === AID).status = newStatus;
-    setRows(rows);
-    setRefresh(refresh + 1);
-    // changeAppointmentStatus({ AID: AID, status: newStatus });
-  };
+  const [refresh, setRefresh] = React.useState(false);
   React.useEffect(() => {
-    // console.log("r");
     setRows(data);
   }, [refresh, data]);
 
+  var totalDebit = 0;
+  var totalCredit = 0;
   return (
     <TableContainer component={Paper}>
       <Table>
         <TableHead>
           <TableRow>
             <TableCell />
-            <TableCell sx={{ fontWeight: "700" }}>Appointment ID</TableCell>
-            <TableCell sx={{ fontWeight: "700" }} align="right">
-              Time
-            </TableCell>
-            <TableCell sx={{ fontWeight: "700" }} align="right">
-              Status
-            </TableCell>
+            <TableCell sx={{ fontWeight: "700" }}>Month</TableCell>
+            <TableCell sx={{ fontWeight: "700" }}>Debit</TableCell>
+            <TableCell sx={{ fontWeight: "700" }}>Credit</TableCell>
+            <TableCell sx={{ fontWeight: "700" }}>Total</TableCell>
           </TableRow>
         </TableHead>
-
         <TableBody>
-          {rows.map((row) => (
-            <Row
-              key={row.AID}
-              row={row}
-              changeStatus={changeStatus}
-            />
-          ))}
+          {rows.map((row, i) => {
+            totalDebit = totalDebit + row.dailydebit;
+            totalCredit = totalCredit + row.dailyCredit;
+            return <Row key={i} row={row} />;
+          })}
+          <TableRow>
+            <TableCell />
+            <TableCell sx={{ fontWeight: "bold" }}>Total</TableCell>
+            <TableCell sx={{ fontWeight: "bold" }}>{totalDebit}</TableCell>
+            <TableCell sx={{ fontWeight: "bold" }}>{totalCredit}</TableCell>
+            <TableCell sx={{ fontWeight: "bold" }}>
+              {totalDebit + totalCredit}
+            </TableCell>
+          </TableRow>
         </TableBody>
+        {/* <AllTotal totalDebit={totalDebit} totalCredit={totalCredit} /> */}
       </Table>
     </TableContainer>
   );
 }
+
+export const AllTotal = ({ totalDebit, totalCredit }) => {
+  return (
+    <TableHead>
+      <TableRow>
+        <TableCell sx={{ fontWeight: "700" }}>TOTAL</TableCell>
+        <TableCell sx={{ fontWeight: "700" }}>TOTAL</TableCell>
+        <TableCell sx={{ fontWeight: "700" }}>{totalDebit}</TableCell>
+        <TableCell sx={{ fontWeight: "700" }}>{totalCredit}</TableCell>
+        <TableCell sx={{ fontWeight: "700" }}>
+          {totalCredit - totalDebit}
+        </TableCell>
+      </TableRow>
+    </TableHead>
+  );
+};

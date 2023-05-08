@@ -10,7 +10,7 @@ import Expense from "../Expense/Expense";
 import FlexEvenly from "../../Components/FlexEvenly";
 function Admin() {
   const [AdminPAge, setAdminPAge] = useState(false);
-  const [pg, setPg] = useState("expense");
+  const [pg, setPg] = useState("chat");
 
   return (
     <section className="Container_App">
@@ -23,8 +23,8 @@ function Admin() {
                 <ChatMessages />
               ) : pg === "contact" ? (
                 <ContactDetails />
-              ) : pg === "expense" ? (
-                <Expense />
+              // ) : pg === "expense" ? (
+              //   <Expense />
               ) : (
                 pg === "project" && <ProjectData />
               )}

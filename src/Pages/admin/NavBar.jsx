@@ -21,9 +21,9 @@ const NavBar = ({ setPg }) => {
         <IconButton onClick={() => setPg("project")}>
           <Work />
         </IconButton>
-        <IconButton onClick={() => setPg("expense")}>
+        {/* <IconButton onClick={() => setPg("expense")}>
           <Numbers />
-        </IconButton>
+        </IconButton> */}
       </FlexBetween>
     </FlexBetween>
   );
