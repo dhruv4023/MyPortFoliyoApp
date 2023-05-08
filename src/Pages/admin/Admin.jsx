@@ -15,7 +15,7 @@ function Admin() {
   return (
     <section className="Container_App">
       <div className="admin_container">
-        {!AdminPAge ? (
+        {AdminPAge ? (
           <>
             <NavBar setPg={setPg} />
             <FlexEvenly>
