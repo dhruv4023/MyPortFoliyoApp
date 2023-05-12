@@ -7,21 +7,21 @@ import { useTheme } from "@emotion/react";
 import WidgetWrapper from "../../Components/WidgetWrapper";
 import { delProject, getProject } from "./project";
 import AddProject from "./AddProject";
-const list = [
-  {
-    _id: "63028c7a139c6b28e7889b8b",
-    title: "You Tube Clone",
-    link: "https://dhruv4023youtubeclone.netlify.app",
-    description:
-      "MERN stack Project Made As a submission Project for NULLCLASS COMPANY Internship.",
-  },
-  {
-    _id: "63028c7a139c6b28e7889b85",
-    title: "Appointment App",
-    link: "https://aasdp.vercel.app",
-    description: "Software development project for submission",
-  },
-];
+// const list = [
+//   {
+//     _id: "63028c7a139c6b28e7889b8b",
+//     title: "You Tube Clone",
+//     link: "https://dhruv4023youtubeclone.netlify.app",
+//     description:
+//       "MERN stack Project Made As a submission Project for NULLCLASS COMPANY Internship.",
+//   },
+//   {
+//     _id: "63028c7a139c6b28e7889b85",
+//     title: "Appointment App",
+//     link: "https://aasdp.vercel.app",
+//     description: "Software development project for submission",
+//   },
+// ];
 function ProjectData() {
   const [linkList, setLinkList] = useState();
   const theme = useTheme();

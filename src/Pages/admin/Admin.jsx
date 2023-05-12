@@ -6,10 +6,9 @@ import ChatMessages from "../Chat/ChatMessages";
 import ContactDetails from "../Messages/ContactDetails";
 import ProjectData from "../Projects/ProjectData";
 import AdminLogin from "./AdminLogin";
-import Expense from "../Expense/Expense";
 import FlexEvenly from "../../Components/FlexEvenly";
 function Admin() {
-  const [AdminPAge, setAdminPAge] = useState(false);
+  const [AdminPAge, setAdminPAge] = useState(true);
   const [pg, setPg] = useState("chat");
 
   return (
