@@ -1,11 +1,17 @@
 import { Box } from "@mui/material";
-import React from "react";
-export default function Messages({ msgLst }) {
-  // console.log(msgLst);
+import React, { useEffect, useRef } from "react";
+export default function Messages({ msgLst, refresh, setRefresh }) {
+  const lastMessageRef = useRef(null);
+  useEffect(() => {
+    if (lastMessageRef.current) {
+      lastMessageRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+    setRefresh(!refresh);
+  }, [refresh]);
   return (
     <>
       {msgLst.map((m, i) => (
-        <Box key={i} p={"0.1rem"} display={"flex"} width={"100%"}>
+        <Box key={i} p={"0.1rem"} display={"flex"} width={"100%"} ref={lastMessageRef}>
           {m.side === "a" ? (
             <>
               <Box flexGrow={1}></Box>

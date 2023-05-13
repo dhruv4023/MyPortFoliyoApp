@@ -2,16 +2,16 @@ import { Button, TextField } from "@mui/material";
 import React, { useState } from "react";
 import FlexBetween from "../../../Components/FlexBetween";
 import { sendNewMsgs } from "../chatApi";
-import { client } from "../../../state";
-
-const WriteMsg = ({ id, setRefresh, msgList }) => {
+const WriteMsg = ({ id, setRefresh, msgList, socket }) => {
   const [val, setVal] = useState("");
   const handleSendMess = (e) => {
     e.preventDefault();
     setRefresh(1);
     setVal("");
-    sendNewMsgs({ side: "a", message: val },id);
-    client.send(JSON.stringify({ type: "message", value: val }));
+    sendNewMsgs({ side: "a", message: val }, id);
+    socket.send(
+      JSON.stringify({ type: "message", value: val, side: "a", id: id })
+    );
   };
   return (
     <form onSubmit={handleSendMess}>

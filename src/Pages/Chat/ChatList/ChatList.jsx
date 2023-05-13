@@ -1,10 +1,14 @@
 import React from "react";
 import DisplayChatTitle from "./DisplayChatTitle";
-import FlexEvenly from "../../../Components/FlexEvenly";
+import { Box } from "@mui/material";
 
 const ChatList = ({ userList, currentChat, setCurrentChat }) => {
   return (
-    <FlexEvenly overflow={"auto"}>
+    <Box
+      display={"flex"}
+      sx={{ overflowX: "auto" }}
+      flexGrow={1}
+    >
       {userList.map((m, i) => (
         <DisplayChatTitle
           key={i}
@@ -13,7 +17,7 @@ const ChatList = ({ userList, currentChat, setCurrentChat }) => {
           setCurrentChat={setCurrentChat}
         />
       ))}
-    </FlexEvenly>
+    </Box>
   );
 };
 

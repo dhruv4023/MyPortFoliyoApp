@@ -6,7 +6,7 @@ import FlexEvenly from "../../../../Components/FlexEvenly";
 
 const NthSection = ({ title, data }) => {
   const [mm, setMm] = useState(new Date().toISOString().substring(0, 7));
-  console.log(data);
+  // console.log(data);
   return (
     <FlexBetween flexDirection={"column"}>
       <FlexEvenly width={"100%"}>

@@ -1,7 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { w3cwebsocket } from "websocket";
-
-export const client = new w3cwebsocket(process.env.REACT_APP_WS);
 
 const initialState = {
   mode: "dark",
@@ -27,6 +24,5 @@ export const authState = createSlice({
   },
 });
 
-export const { setMode, setLogin, setLogout, setFriends, setPosts, setPost } =
-  authState.actions;
+export const { setMode, setLogin, setLogout } = authState.actions;
 export default authState.reducer;

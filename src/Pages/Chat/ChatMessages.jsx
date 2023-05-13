@@ -6,7 +6,8 @@ import ChatList from "./ChatList/ChatList";
 import ChatBox from "./ChatArea/ChatBox";
 
 import { getChatTitles, getChatData } from "./chatApi";
-import { client } from "../../state";
+import { socketConn } from "./wsApi";
+
 // const userList = ["abc", "xyz"];
 
 // const msgList = [
@@ -52,13 +53,18 @@ import { client } from "../../state";
 //   },
 // ];
 function ChatMessages() {
+  const [socket, setSocket] = useState();
   const [userList, setUserList] = useState();
   const [currentChat, setCurrentChat] = useState();
   const [msgData, setMsgData] = useState();
   useEffect(() => {
-    client.onopen = () => {
-      console.log("Web Socket Client connected");
-    };
+    !socket && setSocket(socketConn());
+    if (socket)
+      socket.onopen = () => {
+        // console.log("Web Socket Client connected");
+      };
+  }, [socket]);
+  useEffect(() => {
     !userList && getChatTitles().then((data) => setUserList(data));
     currentChat &&
       getChatData(currentChat._id).then((data) => setMsgData(data));
@@ -72,7 +78,9 @@ function ChatMessages() {
           setCurrentChat={setCurrentChat}
         />
       )}
-      {msgData && <ChatBox currentChat={currentChat} msgList={msgData} />}
+      {msgData && socket && (
+        <ChatBox socket={socket} currentChat={currentChat} msgList={msgData} />
+      )}
     </WidgetWrapper>
   );
 }

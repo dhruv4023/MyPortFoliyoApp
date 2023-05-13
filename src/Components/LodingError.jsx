@@ -1,7 +1,7 @@
 import React from "react";
 
 const LodingError = ({ code, displayComponent }) => {
-  console.log(code);
+  // console.log(code);
   return (
     <>
       {code === 0 ? (
