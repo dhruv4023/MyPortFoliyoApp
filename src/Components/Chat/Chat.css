@@ -11,19 +11,6 @@
   top: 0;
   left: 0;
 }
-.chat2 {
-  position: fixed;
-  bottom: 1rem;
-  right: 0.2rem;
-}
-
-.chatBtn {
-  padding: 0.2rem;
-  cursor: pointer;
-}
-.chat_icon {
-  width: 7rem;
-}
 
 .chatArea {
   z-index: 25;
@@ -38,15 +25,6 @@
   animation: showHideBox 2s ease-in;
   /* display: none; */
   display: var(--chatDisply);
-}
-/* .showHideBox {
-  display: var(--chatDisply);
-} */
-
-.messBox {
-  width: 15rem;
-  height: 20rem;
-  overflow-y: auto;
 }
 
 .mess {
@@ -118,29 +96,3 @@
     width: 5rem;
   }
 }
-
-/* @-webkit-keyframes showHideBox {
-  0% {
-    height: 0px;
-    width: 0px;
-    font-size: 0px;
-  }
-  100% {
-    font-size: 2rem;
-    width: 15rem;
-    height: 20rem;
-  }
-}
-
-@keyframes showHideBox {
-  0% {
-    height: 0px;
-    width: 0px;
-    font-size: 0;
-  }
-  100% {
-    font-size: 2rem;
-    width: 15rem;
-    height: 20rem;
-  }
-} */

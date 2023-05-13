@@ -1,70 +1,61 @@
-import { Box, Button } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import Messages from "./Messages";
-import WriteMsg from "./WriteMsg";
+import { Box, Typography } from "@mui/material";
+import React, { useEffect, useRef, useState } from "react";
+import OldMsgs from "./OldMsgs";
 import Login from "../Login";
-import { getChatData } from "../chatApis";
 import { MyBtn } from "../../MyComponent";
-
-const msgList = [
-  {
-    _id: 1,
-    side: "a",
-    message: "Hello Sir!",
-  },
-  {
-    _id: 2,
-    side: "a",
-    message: "hello",
-  },
-];
+import NewMsg from "./NewMsg";
+import { socketConn } from "../wsApi";
 
 const ChatBox = () => {
-  const [refresh, setRefresh] = useState(0);
-  useEffect(() => {
-    setRefresh(0);
-  }, [refresh]);
+  const [socket, setSocket] = useState();
+  const msgContainerRef = useRef(null);
   const [id, setId] = useState(localStorage.getItem("id"));
-  console.log(id);
-  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    setLoading(true);
-    id
-      ? getChatData(id)
-          .then((x) => {
-            msgList.push(...x);
-            setLoading(false);
-          })
-          .catch(() => setLoading(false))
-      : setLoading(false);
-  }, [id]);
+    if (msgContainerRef.current) {
+      const container = msgContainerRef.current;
+      container.scrollTop = container.scrollHeight - container.clientHeight;
+      const observer = new MutationObserver(() => {
+        container.scrollTop = container.scrollHeight - container.clientHeight;
+      });
+      observer.observe(container, {
+        attributes: true,
+        childList: true,
+        subtree: true,
+      });
+    }
+    !socket && setSocket(socketConn(id));
+  }, []);
 
   return (
-    <Box className="chatArea showHideBox">
-      {loading ? (
-        <>Loading...</>
+    <Box className="chatArea">
+      {id ? (
+        <Box sx={{ overflow: "auto" }}>
+          <MyBtn
+            label="Log out"
+            onclickHandle={() => {
+              localStorage.removeItem("id");
+              setId(null);
+            }}
+          />
+          <h3 style={{ textAlign: "center", margin: "0.2rem", width: "100%" }}>
+            -:Chat with Dhruv:-
+          </h3>
+          <Box
+            sx={{
+              height: "20rem",
+              width: "14rem",
+              overflow: "auto",
+              marginBottom: "1.2rem",
+            }}
+            ref={msgContainerRef}
+          >
+            <OldMsgs id={id} />
+            {socket ? <NewMsg socket={socket} id={id} /> : <>Loading...</>}
+          </Box>
+        </Box>
       ) : (
         <>
-          {id ? (
-            <>
-              <MyBtn
-                label="Log out"
-                onclickHandle={() => {
-                  localStorage.removeItem("id");
-                  setId(null);
-                }}
-              />
-              <h2 className="chatHead">-:Chat with Dhruv:-</h2>
-              <Box className="messBox">
-                {msgList && <Messages msgLst={msgList} />}
-              </Box>
-              <WriteMsg id={id} setRefresh={setRefresh} msgList={msgList} />
-            </>
-          ) : (
-            <>
-              <Login setId={setId} />
-            </>
-          )}
+          <Login setId={setId} />
         </>
       )}
     </Box>

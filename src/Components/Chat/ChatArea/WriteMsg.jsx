@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { sendNewMsgs } from "./../chatApis";
-const WriteMsg = ({ id, setRefresh, msgList }) => {
+const WriteMsg = ({ id, setRefresh, msgList, socket }) => {
   const [val, setVal] = useState("");
   const handleSendMess = (e) => {
     e.preventDefault();
-    setRefresh(1);
-    msgList.push({ side: "v", message: val });
     setVal("");
     sendNewMsgs({ side: "v", message: val }, id);
+    socket.send(
+      JSON.stringify({ type: "message", value: val, side: "v", id: id })
+    );
+    setRefresh(1);
   };
   return (
     <form onSubmit={handleSendMess} className="sendMess">

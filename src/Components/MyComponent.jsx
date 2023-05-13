@@ -9,7 +9,7 @@ export const MyBtn = ({ onclickHandle, label = "x" }) => {
       type="submit"
       onClick={onclickHandle}
       sx={{
-        m: "1.2rem 0",
+        m: ".2rem 0",
         p: "1rem",
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.background.alt,
