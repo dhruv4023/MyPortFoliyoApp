@@ -23,8 +23,8 @@ const ChatBox = () => {
         subtree: true,
       });
     }
-    !socket && setSocket(socketConn(id));
-  }, []);
+    id && !socket && setSocket(socketConn(id));
+  }, [id]);
 
   return (
     <Box className="chatArea">
