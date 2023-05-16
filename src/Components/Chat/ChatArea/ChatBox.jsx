@@ -25,7 +25,7 @@ const ChatBox = () => {
     }
     id && !socket && setSocket(socketConn(id));
   }, [id]);
-
+  console.log(typeof id, socket);
   return (
     <Box className="chatArea">
       {id ? (

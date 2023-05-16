@@ -10,7 +10,11 @@ const OldMsgs = ({ id }) => {
     id &&
       getChatData(id)
         .then((x) => {
-          setMsgList(x);
+          if (typeof x === Array) {
+            setMsgList(x);
+          }else{
+            console.log("erro")
+          }
           setLoading(false);
         })
         .catch(() => setLoading(false));

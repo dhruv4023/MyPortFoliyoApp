@@ -21,16 +21,17 @@ function Login({ setId }) {
   const sendOtp = () => {
     if (!values.name || !values.email) {
       alert("Please enter nam and Email to continue");
+    } else {
+      setLoading(true);
+      sendOtpEmail({ email: values.email })
+        .then((x) => {
+          setOtpSent(x);
+          setLoading(false);
+        })
+        .catch(() => {
+          setLoading(false);
+        });
     }
-    setLoading(true);
-    sendOtpEmail({ email: values.email })
-      .then((x) => {
-        setOtpSent(x);
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
   };
   const startChat = () => {
     setLoading(true);

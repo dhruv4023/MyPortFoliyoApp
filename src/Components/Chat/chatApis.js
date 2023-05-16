@@ -53,6 +53,6 @@ export const VerifyAndStartChat = async (data) => {
     body: JSON.stringify(data),
   });
   const rs = await res.json();
-  localStorage.setItem("id", rs.id);
+  if (rs.id) localStorage.setItem("id", rs.id);
   return rs.id;
 };
