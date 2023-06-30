@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home";
 import MyProject from "../Pages/Projects/MyProject";
 import { useTheme } from "@emotion/react";
 import Contact from "../Pages/Contact/Contact";
+import Github from "../Pages/github/Github";
 
 const PageSec = () => {
   const theme = useTheme();
@@ -16,6 +17,7 @@ const PageSec = () => {
     >
       <Home />
       <MyProject />
+      <Github />
       <Contact />
     </FlexBetween>
   );
