@@ -16,7 +16,6 @@ const PageSec = () => {
     >
       <Home />
       <Github />
-      <SocialLink />
     </FlexBetween>
   )
 }

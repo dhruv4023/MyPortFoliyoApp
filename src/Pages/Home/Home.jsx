@@ -5,10 +5,11 @@ import './TextAnimation.css'
 import FlexBetween from '../../Components/FlexBetween'
 import WidgetWrapper from '../../Components/WidgetWrapper'
 import UserImg from '../../Components/UserImg'
+import SocialLink from '../../Components/SocialLink/SocialLink'
 export default function Home () {
   return (
     <FlexBetween width='100%' flexWrap={'wrap'}>
-      <WidgetWrapper height={'90vh'} width={'100%'}>
+      <WidgetWrapper flexDirection={'column'} height={'90vh'} width={'100%'}>
         <Box
           sx={{
             fontSize: '1.5rem',
@@ -17,9 +18,10 @@ export default function Home () {
           }}
           className='text_home animate_charcter'
         >
-          <UserImg/>
+          <UserImg size='400rem'/>
           Hello My Name is Dhruv Patel.
         </Box>
+        <SocialLink />
       </WidgetWrapper>
     </FlexBetween>
   )

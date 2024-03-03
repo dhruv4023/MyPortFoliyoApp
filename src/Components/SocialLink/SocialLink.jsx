@@ -6,13 +6,13 @@ import linkedIn from "./linkedin.png";
 import twitter from "./twitter.jpg";
 import facebook from "./fb.jpg";
 import github from "./github.png";
-import WidgetWrapper from "../WidgetWrapper";
 import WhatsApp from "./whatsapp.png";
 import GMAIL from "./gmail.jpg";
+import FlexBetween from "../FlexBetween";
 
 function SocialLink() {
   return (
-    <WidgetWrapper>
+    <FlexBetween overflow={"auto"} height={"80%"}>
       <a href="https://t.me/dhruv4023">
         {" "}
         <img className="socialImg" src={telegram} alt="telegram" />
@@ -41,7 +41,7 @@ function SocialLink() {
         {" "}
         <img className="socialImg" src={GMAIL} alt="github" />
       </a>
-    </WidgetWrapper>
+    </FlexBetween>
   );
 }
 
