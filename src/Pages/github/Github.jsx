@@ -8,7 +8,6 @@ export default function Github() {
   useEffect(() => {
     setGithubLinkss(githubLinksStatic());
   }, []);
-  const x = "Media/chatbot.jpg";
   return (
     <>
       {githubLinkss ? (
