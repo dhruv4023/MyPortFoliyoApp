@@ -7,6 +7,7 @@ import twitter from "./twitter.jpg";
 import facebook from "./fb.jpg";
 import github from "./github.png";
 import WidgetWrapper from "../WidgetWrapper";
+import WhatsApp from "./whatsapp.png";
 
 function SocialLink() {
   return (
@@ -30,6 +31,10 @@ function SocialLink() {
       <a href="https://github.com/dhruv4023">
         {" "}
         <img className="socialImg" src={github} alt="github" />
+      </a>
+      <a href="https://wa.me/919409434932?text=Hello">
+        {" "}
+        <img className="socialImg" src={WhatsApp} alt="github" />
       </a>
     </WidgetWrapper>
   );

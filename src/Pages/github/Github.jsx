@@ -1,28 +1,30 @@
-import { Box } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FlexBetween from "../../Components/FlexBetween";
-import WidgetWrapper from "../../Components/WidgetWrapper";
-import { useTheme } from "@emotion/react";
-export default function Github() {
-  const theme = useTheme();
-  const githubLinks = [
-    {
-      _id: 1,
-      projectName: "Toy Language",
-      link: "https://github.com/dhruv4023/ToyLanguage",
-    },
-    {
-      _id: 2,
-      projectName: "Toy Language",
-      link: "https://github.com/dhruv4023/ToyLanguage",
-    },
-  ];
-  return (
-    <WidgetWrapper
-      width={"95vw"}
-      backgroundColor={theme.palette.background.semiTransparent}
-    >
+import Repository from "./Repository";
+import { githubLinksStatic } from "./MydataStatic";
 
-    </WidgetWrapper>
+export default function Github() {
+  const [githubLinkss, setGithubLinkss] = useState();
+  useEffect(() => {
+    setGithubLinkss(githubLinksStatic());
+  }, []);
+  const x = "Media/chatbot.jpg";
+  return (
+    <>
+      {githubLinkss ? (
+        <FlexBetween
+          width={"95vw"}
+          borderRadius={4}
+          overflow={"auto"}
+          flexDirection={"column"}
+        >
+          {githubLinkss.map((m, i) => {
+            return <Repository data={m} key={i} />;
+          })}
+        </FlexBetween>
+      ) : (
+        <>Loading...</>
+      )}
+    </>
   );
 }

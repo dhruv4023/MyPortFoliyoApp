@@ -13,7 +13,7 @@ export default function Contact(props) {
       className="Container_App"
     >
       <ContactForm />
-      <SocialLink />
+      {/* <SocialLink />` */}
     </FlexBetween>
   );
 }
